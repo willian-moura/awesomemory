@@ -1,0 +1,51 @@
+@import "functions";
+%flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+%flex-inline {
+  display: inline-flex;
+}
+
+%column-center {
+  @extend %flex-column;
+  justify-content: center;
+  align-content: center;
+}
+
+%column-start {
+  @extend %flex-column;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+%inline-center {
+  @extend %flex-inline;
+  justify-content: center;
+  align-content: center;
+}
+
+%inline-start-center {
+  @extend %inline-center;
+  justify-content: flex-start;
+}
+
+%gap-0{gap: gap(0);}
+%gap-1{gap: gap(1);}
+%gap-2{gap: gap(2);}
+%gap-3{gap: gap(3);}
+%gap-4{gap: gap(4);}
+
+%w-full{
+  width: 100%;
+}
+
+%h-full{
+  height: 100%;
+}
+
+%wh-full{
+  width: 100%;
+  height: 100%;
+}

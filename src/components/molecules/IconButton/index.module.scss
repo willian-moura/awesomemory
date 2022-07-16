@@ -1,0 +1,6 @@
+@import "src/styles/extends";
+@import "src/styles/functions";
+
+.container {
+  @extend %inline-start-center, %gap-1;
+}

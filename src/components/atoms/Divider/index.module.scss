@@ -1,0 +1,25 @@
+@import "src/styles/variables";
+$size: 2px;
+$dividerColor: $gravy;
+
+.container {
+  padding: 0.5rem 0;
+
+  [class~=divider]{
+    width: 100%;
+    border-left: none;
+    height: 0;
+    border-top: $size solid $dividerColor;
+  }
+}
+
+.vertical {
+  padding: 0 0.5rem;
+
+  [class~=divider]{
+    width: 0;
+    border-top: none;
+    height: 100%;
+    border-left: $size solid $dividerColor;
+  }
+}

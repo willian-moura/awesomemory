@@ -1,0 +1,37 @@
+@import "src/styles/variables";
+@import "src/styles/extends";
+
+$btn-bg-color: $white;
+$btn-bg-color-important: $yellow;
+$btn-color: $dk-text-color;
+
+.container {
+  button{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: $btn-color;
+
+    height: 48px;
+    padding: 0 16px;
+
+    background-color: $btn-bg-color;
+    border-radius: 8px;
+    border: 2px solid $dk-gravy;
+    cursor: pointer;
+  }
+
+  button:hover{
+    filter: brightness(0.90);
+  }
+}
+.important button{
+  background-color: $btn-bg-color-important;
+  border: none;
+}
+
+.long button{
+  @extend %w-full;
+}

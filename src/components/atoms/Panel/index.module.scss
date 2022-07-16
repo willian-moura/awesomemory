@@ -1,0 +1,8 @@
+@import "src/styles/variables";
+
+.container {
+  background: $white;
+  box-shadow: 0 4px 4px rgba(195, 198, 209, 0.15);
+  border-radius: 8px;
+  padding: 16px;
+}

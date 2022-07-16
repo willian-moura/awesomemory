@@ -1,0 +1,42 @@
+@import "variables";
+:root{
+  // primitives
+  --white: #{$white};
+  --yellow: #{$yellow};
+  --dk-yellow: #{$dk-yellow};
+  --blue: #{$blue};
+  --dk-blue: #{$dk-blue};
+  --lt-gravy: #{$lt-gravy};
+  --gravy: #{$gravy};
+  --md-gravy: #{$md-gravy};
+  --dk-gravy: #{$dk-gravy};
+  --md-navy: #{$md-navy};
+  --navy: #{$navy};
+
+  // composed or specifics
+  --body-background: #{$body-background};
+  --text-color: #{$text-color};
+  --dk-text-color: #{$dk-text-color};
+  --link: #{$link};
+  --input-placeholder: #{$input-placeholder};
+  --tag-background: #{$tag-background};
+
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+
+  background-color: $body-background;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
