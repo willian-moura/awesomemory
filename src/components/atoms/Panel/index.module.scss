@@ -1,6 +1,8 @@
 @import "src/styles/variables";
+@import "src/styles/extends";
 
 .container {
+  @extend %w-full;
   background: $white;
   box-shadow: 0 4px 4px rgba(195, 198, 209, 0.15);
   border-radius: 8px;

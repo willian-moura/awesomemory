@@ -1,0 +1,21 @@
+@import "src/styles/extends";
+@import "src/styles/variables";
+
+.container{
+  width: 20vw;
+  height: 20vw;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0 4px 4px rgba(195, 198, 209, 0.15);
+  transition: 0.3s;
+
+  @extend %inline-center;
+
+  [class~=icon]{
+    @extend %inline-center;
+  }
+}
+
+.focused {
+  background-color: $yellow;
+}

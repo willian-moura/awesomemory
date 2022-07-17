@@ -1,0 +1,4 @@
+@import "src/styles/extends";
+.container {
+  @extend %column-center, %gap-2;
+}

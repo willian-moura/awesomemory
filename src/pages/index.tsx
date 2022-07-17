@@ -5,9 +5,15 @@ import Text from '@components/atoms/Text'
 import IconButton from '@components/molecules/IconButton'
 import Divider from '@components/atoms/Divider'
 import Logo from '@components/atoms/Logo'
+import Router from 'next/router'
 
 const Home: NextPage = () => {
   const userName = 'Test User'
+
+  const onPlay = () => {
+    Router.push('/game')
+  }
+
   return (
     <div className={styles.container}>
       <div className={'logo'}>
@@ -22,7 +28,7 @@ const Home: NextPage = () => {
             <Text> Let’s play?</Text>
           </div>
           <div className={'actions'}>
-            <IconButton icon={'gamepad'} long>
+            <IconButton icon={'gamepad'} long onClick={onPlay}>
               Play
             </IconButton>
             <IconButton icon={'list-ol'} long>

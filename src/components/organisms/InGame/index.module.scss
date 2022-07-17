@@ -1,0 +1,7 @@
+@import "src/styles/extends";
+
+.container {
+  @extend %inline-center;
+  flex-wrap: wrap;
+  gap: 12px;
+}

@@ -11,19 +11,19 @@
 %column-center {
   @extend %flex-column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 
 %column-start {
   @extend %flex-column;
   justify-content: flex-start;
-  align-content: flex-start;
+  align-items: flex-start;
 }
 
 %inline-center {
   @extend %flex-inline;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 
 %inline-start-center {
