@@ -30,6 +30,10 @@
   @extend %inline-center;
   justify-content: flex-start;
 }
+%inline-end-center {
+  @extend %inline-center;
+  justify-content: flex-end;
+}
 
 %gap-0{gap: gap(0);}
 %gap-1{gap: gap(1);}

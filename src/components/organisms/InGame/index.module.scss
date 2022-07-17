@@ -1,7 +1,14 @@
 @import "src/styles/extends";
 
 .container {
-  @extend %inline-center;
-  flex-wrap: wrap;
-  gap: 12px;
+  @extend %column-start, %wh-full;
+
+  [class~=cards-wrapper] {
+    @extend %column-center, %wh-full;
+  }
+  [class~=cards] {
+    @extend %inline-center, %w-full;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 }

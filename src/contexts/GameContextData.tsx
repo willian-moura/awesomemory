@@ -11,8 +11,8 @@ type GameContextData = {
   foundedIcons: Array<icon>
   turnedCards: Array<card>
   interval: NodeJS.Timer | null
-  setIsFoundedDrawerOpen: (value: boolean) => void
-  setIsMenuOpen: (value: boolean) => void
+  toggleIsFoundedDrawerOpen: () => void
+  toggleIsMenuOpen: () => void
   setCards: (cards: Array<card>) => void
   setFoundedIcons: (icons: Array<icon>) => void
   startGame: (icons: Array<icon>) => void
@@ -136,6 +136,13 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
     return true
   }
 
+  const toggleIsMenuOpen = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+  const toggleIsFoundedDrawerOpen = () => {
+    setIsFoundedDrawerOpen(!isFoundedDrawerOpen)
+  }
+
   return (
     <GameContext.Provider
       value={{
@@ -157,8 +164,8 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
         verifyFinish,
         setCards,
         setFoundedIcons,
-        setIsFoundedDrawerOpen,
-        setIsMenuOpen
+        toggleIsFoundedDrawerOpen,
+        toggleIsMenuOpen
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import styles from './index.module.scss'
-import { Props } from '../../../types/globals'
+import { icon, Props } from '../../../types/globals'
 import Panel from '@components/atoms/Panel'
 import Text from '@components/atoms/Text'
 import IconButton from '@components/molecules/IconButton'
@@ -56,6 +56,36 @@ const ICONS = [
   {
     uuid: '10',
     name: 'info-circle',
+    family: 'fas'
+  },
+  {
+    uuid: '11',
+    name: 'otter',
+    family: 'fas'
+  },
+  {
+    uuid: '12',
+    name: 'user-astronaut',
+    family: 'fas'
+  },
+  {
+    uuid: '13',
+    name: 'rocket',
+    family: 'fas'
+  },
+  {
+    uuid: '14',
+    name: 'satellite',
+    family: 'fas'
+  },
+  {
+    uuid: '15',
+    name: 'campground',
+    family: 'fas'
+  },
+  {
+    uuid: '16',
+    name: 'user-secret',
     family: 'fas'
   }
 ]

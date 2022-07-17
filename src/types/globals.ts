@@ -7,8 +7,8 @@ export type Props = {
 
 export type icon = {
   uuid: string
-  name: IconName
-  family: IconPrefix
+  name: IconName | string
+  family: IconPrefix | string
 }
 
 export type card = {

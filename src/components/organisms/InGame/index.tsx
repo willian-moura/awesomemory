@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { GameContext } from '@contexts/GameContextData'
 import Card from '@components/molecules/Card'
 import { card } from '../../../types/globals'
+import Header from '@components/molecules/Header'
 
 export default function InGame() {
   const gameContext = useContext(GameContext)
@@ -39,9 +40,14 @@ export default function InGame() {
 
   return (
     <div className={styles.container}>
-      {cards.map((card) => (
-        <Card key={card.id} card={card} onClick={onClickCard} />
-      ))}
+      <Header />
+      <div className={'cards-wrapper'}>
+        <div className={'cards'}>
+          {cards.map((card) => (
+            <Card key={card.id} card={card} onClick={onClickCard} />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
