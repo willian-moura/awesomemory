@@ -17,8 +17,8 @@ export default function InGame() {
   } = gameContext
 
   const onClickCard = (card: card) => {
-    const founded = verifyIfFound()
-    if (founded) {
+    const found = verifyIfFound()
+    if (found) {
       return
     }
 

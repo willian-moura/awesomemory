@@ -17,8 +17,8 @@ const ICONS = [
     uuid: '2',
     name: 'dog',
     family: 'fas'
-  },
-  {
+  }
+  /*{
     uuid: '3',
     name: 'user',
     family: 'fas'
@@ -87,7 +87,7 @@ const ICONS = [
     uuid: '16',
     name: 'user-secret',
     family: 'fas'
-  }
+  }*/
 ]
 
 export default function PreGameWarning() {

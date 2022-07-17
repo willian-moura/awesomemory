@@ -5,23 +5,22 @@ type GameContextData = {
   startedAt: Date | null
   finishedAt: Date | null
   currentDuration: number
-  isFoundedDrawerOpen: boolean
+  isFoundDrawerOpen: boolean
   isMenuOpen: boolean
   cards: Array<card>
-  foundedIcons: Array<icon>
+  foundIcons: Array<icon>
   turnedCards: Array<card>
   interval: NodeJS.Timer | null
-  toggleIsFoundedDrawerOpen: () => void
+  toggleIsFoundDrawerOpen: () => void
   toggleIsMenuOpen: () => void
   setCards: (cards: Array<card>) => void
-  setFoundedIcons: (icons: Array<icon>) => void
+  setFoundIcons: (icons: Array<icon>) => void
   startGame: (icons: Array<icon>) => void
   finishGame: () => void
   turnCard: (cardId: number) => void
   turnAllCardsDown: () => void
   focusCard: (cardId: number) => void
   verifyIfFound: () => boolean
-  verifyFinish: () => boolean
 }
 
 export const GameContext = createContext({} as GameContextData)
@@ -34,12 +33,12 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
   const [startedAt, setStartedAt] = useState<Date | null>(null)
   const [finishedAt, setFinishedAt] = useState<Date | null>(null)
   const [currentDuration, setCurrentDuration] = useState(0)
-  const [isFoundedDrawerOpen, setIsFoundedDrawerOpen] = useState(false)
+  const [isFoundDrawerOpen, setIsFoundDrawerOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const [cards, setCards] = useState<Array<card>>([])
   const [turnedCards, setTurnedCards] = useState<Array<card>>([])
-  const [foundedIcons, setFoundedIcons] = useState<Array<icon>>([])
+  const [foundIcons, setFoundIcons] = useState<Array<icon>>([])
   const [durationInterval, setDurationInterval] = useState<NodeJS.Timer | null>(
     null
   )
@@ -71,10 +70,6 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
   }
 
   const finishGame = () => {
-    if (cards.length > 0) {
-      return
-    }
-
     setFinishedAt(new Date())
     if (durationInterval) {
       clearInterval(durationInterval)
@@ -110,11 +105,14 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
     const iconUuid = turnedCards[0].icon.uuid
     if (turnedCards[1].icon.uuid === iconUuid) {
       const newCards = cards.filter((card) => card.icon.uuid !== iconUuid)
-      const newFoundedIcons = [...foundedIcons, turnedCards[0].icon]
+      const newFoundIcons = [...foundIcons, turnedCards[0].icon]
       setCards([...newCards])
-      setFoundedIcons([...newFoundedIcons])
+      setFoundIcons([...newFoundIcons])
       setTurnedCards([])
 
+      if (!newCards.length) {
+        finishGame()
+      }
       return true
     }
 
@@ -127,20 +125,11 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
     setTurnedCards([])
   }
 
-  const verifyFinish = () => {
-    if (cards.length > 0) {
-      return false
-    }
-
-    finishGame()
-    return true
-  }
-
   const toggleIsMenuOpen = () => {
     setIsMenuOpen(!isMenuOpen)
   }
-  const toggleIsFoundedDrawerOpen = () => {
-    setIsFoundedDrawerOpen(!isFoundedDrawerOpen)
+  const toggleIsFoundDrawerOpen = () => {
+    setIsFoundDrawerOpen(!isFoundDrawerOpen)
   }
 
   return (
@@ -149,11 +138,11 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
         startedAt,
         finishedAt,
         currentDuration,
-        isFoundedDrawerOpen,
+        isFoundDrawerOpen,
         isMenuOpen,
         cards,
         turnedCards,
-        foundedIcons,
+        foundIcons: foundIcons,
         interval: durationInterval,
         startGame,
         finishGame,
@@ -161,10 +150,9 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
         turnAllCardsDown,
         focusCard,
         verifyIfFound,
-        verifyFinish,
         setCards,
-        setFoundedIcons,
-        toggleIsFoundedDrawerOpen,
+        setFoundIcons,
+        toggleIsFoundDrawerOpen,
         toggleIsMenuOpen
       }}
     >

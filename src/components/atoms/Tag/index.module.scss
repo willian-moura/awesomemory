@@ -1,0 +1,19 @@
+@import "src/styles/extends";
+@import "src/styles/variables";
+
+.container{
+  @extend %inline-start-center;
+  padding: 2px 1rem;
+  gap: 10px;
+  border-radius: 64px;
+  background-color: $blue;
+
+  font-family: 'IBM Plex Mono', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: lowercase;
+
+  color: $white;
+}

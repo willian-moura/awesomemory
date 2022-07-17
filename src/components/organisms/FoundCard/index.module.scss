@@ -1,0 +1,13 @@
+@import "src/styles/extends";
+@import "src/styles/variables";
+
+.container {
+  @extend %inline-start-center, %gap-1, %w-full, %shadow;
+  border-radius: 8px;
+  background-color: $lt-gravy;
+
+  [class~=details] {
+    @extend %column-start, %gap-0, %wh-full;
+    padding: 0.5rem;
+  }
+}

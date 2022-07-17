@@ -1,0 +1,8 @@
+@import "src/styles/extends";
+@import "src/styles/variables";
+
+.container {
+  @extend %column-start, %gap-1, %wh-full;
+  background-color: $white;
+  padding: 0 1rem;
+}

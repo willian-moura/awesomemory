@@ -1,0 +1,21 @@
+@import "src/styles/extends";
+@import "src/styles/variables";
+
+.container{
+  @extend %column-center, %wh-full;
+  position: absolute;
+  padding: 1rem;
+  background: rgba($body-background, .9);
+
+  [class~=content]{
+    @extend %column-center, %gap-2,%w-full;
+  }
+
+  [class~=title]{
+    @extend %column-center, %w-full, %gap-1;
+  }
+
+  [class~=actions]{
+    @extend %column-start, %w-full, %gap-1;
+  }
+}

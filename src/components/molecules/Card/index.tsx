@@ -4,13 +4,14 @@ import Icon from '@components/atoms/Icon'
 import classNames from 'classnames/bind'
 
 type CardProps = {
+  size?: string
   card: card
-  onClick: (card: card) => void
+  onClick?: (card: card) => void
 }
 
 const cx = classNames.bind(styles)
 
-export default function Card({ onClick, card }: CardProps) {
+export default function Card({ onClick, card, size }: CardProps) {
   const { focused, icon, turned } = card
 
   const classes = cx({
@@ -19,12 +20,17 @@ export default function Card({ onClick, card }: CardProps) {
     turned
   })
 
+  const style = {
+    minWidth: size,
+    minHeight: size
+  }
+
   const onClickCard = () => {
     onClick(card)
   }
 
   return (
-    <div className={classes} onClick={onClickCard}>
+    <div className={classes} style={style} onClick={onClickCard}>
       <div className={'inner'}>
         <div className={'flip-front'}>
           <Icon

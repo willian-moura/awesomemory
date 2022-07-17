@@ -1,0 +1,11 @@
+@import "src/styles/variables";
+@import "src/styles/extends";
+
+.container {
+  @extend %inline-center, %w-full;
+  padding: 0.25rem;
+  background-color: $white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  cursor: pointer;
+}

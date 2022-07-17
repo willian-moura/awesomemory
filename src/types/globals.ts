@@ -2,7 +2,7 @@ import React from 'react'
 import { IconName, IconPrefix } from '@fortawesome/free-brands-svg-icons'
 
 export type Props = {
-  children: React.ReactNode | null
+  children?: React.ReactNode | null
 }
 
 export type icon = {
