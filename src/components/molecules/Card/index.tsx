@@ -15,7 +15,8 @@ export default function Card({ onClick, card }: CardProps) {
 
   const classes = cx({
     container: true,
-    focused
+    focused,
+    turned
   })
 
   const onClickCard = () => {
@@ -24,12 +25,13 @@ export default function Card({ onClick, card }: CardProps) {
 
   return (
     <div className={classes} onClick={onClickCard}>
-      <div className={'icon'}>
-        {turned ? (
+      <div className={'inner'}>
+        <div className={'flip-front'}>
           <Icon icon={[icon.family, icon.name]} size={'2x'} />
-        ) : (
+        </div>
+        <div className={'flip-back'}>
           <Icon icon={['fab', 'font-awesome-flag']} size={'2x'} />
-        )}
+        </div>
       </div>
     </div>
   )

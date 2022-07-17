@@ -2,20 +2,47 @@
 @import "src/styles/variables";
 
 .container{
+  background-color: transparent;
   width: 20vw;
   height: 20vw;
-  background-color: $white;
-  border-radius: 8px;
-  box-shadow: 0 4px 4px rgba(195, 198, 209, 0.15);
-  transition: 0.3s;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
 
-  @extend %inline-center;
+  [class~=inner]{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
 
-  [class~=icon]{
+  [class~=flip-front], [class~=flip-back] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+
     @extend %inline-center;
+    background-color: $white;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px rgba(195, 198, 209, 0.15);
+  }
+
+  [class~=flip-front]{
+    border: 4px solid #5F697D;
+    transform: rotateY(180deg);
+  }
+
+  [class~=flip-back]{
+    transition: 0.3s;
   }
 }
 
-.focused {
+.focused [class~=flip-back]{
   background-color: $yellow;
+}
+
+.turned [class~=inner]{
+  transform: rotateY(180deg);
 }

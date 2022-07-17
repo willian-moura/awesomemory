@@ -26,6 +26,10 @@ export default function InGame() {
       return
     }
 
+    if (card.turned) {
+      return
+    }
+
     if (card.focused) {
       return turnCard(card.id)
     }
