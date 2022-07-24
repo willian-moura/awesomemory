@@ -1,0 +1,7 @@
+@import "src/styles/extends";
+
+.container {
+  @extend %wh-full, %column-center;
+  position: relative;
+  overflow: hidden;
+}

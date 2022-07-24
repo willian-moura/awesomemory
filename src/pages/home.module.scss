@@ -13,7 +13,7 @@
     padding: 16px;
 
     [class~=actions]{
-      @extend %column-start, %gap-1;
+      @extend %column-start, %gap-1, %wh-full;
     }
   }
 }

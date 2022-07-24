@@ -1,0 +1,20 @@
+@import "src/styles/extends";
+@import "src/styles/variables";
+.container {
+  @extend %inline-center, %w-full;
+  padding: 1rem;
+  background-color: $white;
+
+  [class~=menu-icon] {
+    @extend %inline-start-center, %w-full;
+    justify-self: flex-start;
+  }
+  [class~=duration] {
+    @extend %inline-center, %w-full;
+    justify-self: center;
+  }
+  [class~=logo-icon] {
+    @extend %inline-end-center, %w-full;
+    justify-self: flex-end;
+  }
+}
