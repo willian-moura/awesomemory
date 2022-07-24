@@ -1,6 +1,10 @@
 import { createContext, ReactNode, useState } from 'react'
 import { getApps, initializeApp } from '@firebase/app'
-import { getAuth } from '@firebase/auth'
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword
+} from '@firebase/auth'
 
 if (!getApps().length) {
   initializeApp({
@@ -17,6 +21,7 @@ const auth = getAuth()
 
 type AuthContextData = {
   user: any
+  setUser: (user: any) => void
   signUp: (data: SignUpData) => void
   signIn: (data: SignInData) => void
   signOut: () => void
@@ -41,5 +46,64 @@ type AuthContextProviderProps = {
 }
 
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
-  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>
+  const [user, setUser] = useState<any>({})
+
+  const signUp = async (data: SignUpData) => {
+    try {
+      await createUserWithEmailAndPassword(auth, data.email, data.password)
+      return signIn({ email: data.email, password: data.password })
+    } catch (e) {
+      return e
+    }
+  }
+
+  const signIn = async (data: SignInData) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      )
+      const user = userCredential.user
+
+      if (typeof window !== 'undefined') {
+        const { uid, email } = user
+        localStorage.setItem(
+          '@awesomemory:user',
+          JSON.stringify({ uid, email })
+        )
+      }
+      return user
+    } catch (e) {
+      return e
+    }
+  }
+
+  const signOut = async () => {
+    try {
+      const response = await auth.signOut()
+
+      setUser(null)
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('@awesomemory:user')
+      }
+      return response
+    } catch (e) {
+      return e
+    }
+  }
+
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        setUser,
+        signUp,
+        signIn,
+        signOut
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  )
 }

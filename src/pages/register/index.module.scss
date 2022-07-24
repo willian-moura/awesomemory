@@ -1,0 +1,23 @@
+@import "src/styles/extends";
+
+.container {
+  @extend %column-center, %wh-full, %gap-4;
+  padding: 16px;
+
+  [class~=logo] {
+    @extend %inline-center, %w-full;
+  }
+
+  [class~=panel] {
+    @extend %column-center, %gap-4, %wh-full;
+    padding: 16px;
+
+    [class~=form]{
+      @extend %column-start, %gap-1, %wh-full;
+    }
+
+    [class~=actions]{
+      @extend %column-start, %gap-1, %wh-full;
+    }
+  }
+}

@@ -23,10 +23,14 @@
       border: none;
     }
 
-    &:has(input:focus){
+    &:focus-within{
       box-shadow:
               0 0 0 calc(1em*1/16) $body-background,
               0 0 0 calc(calc(1em*3/16) + calc(1em*1/16)) $blue;
     }
+  }
+
+  ::placeholder{
+    color: $input-placeholder;
   }
 }
