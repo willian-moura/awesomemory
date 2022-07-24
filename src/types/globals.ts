@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import { IconName, IconPrefix } from '@fortawesome/free-brands-svg-icons'
 
 export type Props = {
   children?: React.ReactNode | null
+  onClick?: MouseEventHandler
 }
 
 export type icon = {
