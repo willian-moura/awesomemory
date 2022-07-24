@@ -5,4 +5,5 @@
   @extend %column-start, %gap-1, %wh-full;
   background-color: $white;
   padding: 0 1rem;
+  z-index: 1;
 }

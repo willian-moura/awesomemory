@@ -4,13 +4,11 @@ import { card, icon } from '../types/globals'
 type GameContextData = {
   startedAt: Date | null
   finishedAt: Date | null
-  currentDuration: number
   isFoundDrawerOpen: boolean
   isMenuOpen: boolean
   cards: Array<card>
   foundIcons: Array<icon>
   turnedCards: Array<card>
-  interval: NodeJS.Timer | null
   toggleIsFoundDrawerOpen: () => void
   toggleIsMenuOpen: () => void
   setCards: (cards: Array<card>) => void
@@ -20,7 +18,9 @@ type GameContextData = {
   turnCard: (cardId: number) => void
   turnAllCardsDown: () => void
   focusCard: (cardId: number) => void
+  resetFocus: () => void
   verifyIfFound: () => boolean
+  resetData: () => void
 }
 
 export const GameContext = createContext({} as GameContextData)
@@ -32,16 +32,12 @@ type GameContextProviderProps = {
 export function GameContextProvider({ children }: GameContextProviderProps) {
   const [startedAt, setStartedAt] = useState<Date | null>(null)
   const [finishedAt, setFinishedAt] = useState<Date | null>(null)
-  const [currentDuration, setCurrentDuration] = useState(0)
   const [isFoundDrawerOpen, setIsFoundDrawerOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const [cards, setCards] = useState<Array<card>>([])
   const [turnedCards, setTurnedCards] = useState<Array<card>>([])
   const [foundIcons, setFoundIcons] = useState<Array<icon>>([])
-  const [durationInterval, setDurationInterval] = useState<NodeJS.Timer | null>(
-    null
-  )
 
   const startGame = (icons: Array<icon>) => {
     let newCards = new Array<card>()
@@ -62,18 +58,10 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
 
     setCards([...newCards])
     setStartedAt(new Date())
-    const interval = setInterval(
-      () => setCurrentDuration(currentDuration + 1),
-      1000
-    )
-    setDurationInterval(interval)
   }
 
   const finishGame = () => {
     setFinishedAt(new Date())
-    if (durationInterval) {
-      clearInterval(durationInterval)
-    }
   }
 
   const turnCard = (cardId: number) => {
@@ -95,6 +83,14 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
       }))
       setCards([...newCards])
     }
+  }
+
+  const resetFocus = () => {
+    const newCards = cards.map((card) => ({
+      ...card,
+      focused: false
+    }))
+    setCards([...newCards])
   }
 
   const verifyIfFound = () => {
@@ -132,28 +128,38 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
     setIsFoundDrawerOpen(!isFoundDrawerOpen)
   }
 
+  const resetData = () => {
+    setStartedAt(null)
+    setFinishedAt(null)
+    setIsFoundDrawerOpen(false)
+    setIsMenuOpen(false)
+    setCards([])
+    setTurnedCards([])
+    setFoundIcons([])
+  }
+
   return (
     <GameContext.Provider
       value={{
         startedAt,
         finishedAt,
-        currentDuration,
         isFoundDrawerOpen,
         isMenuOpen,
         cards,
         turnedCards,
-        foundIcons: foundIcons,
-        interval: durationInterval,
+        foundIcons,
         startGame,
         finishGame,
         turnCard,
         turnAllCardsDown,
         focusCard,
+        resetFocus,
         verifyIfFound,
         setCards,
         setFoundIcons,
         toggleIsFoundDrawerOpen,
-        toggleIsMenuOpen
+        toggleIsMenuOpen,
+        resetData
       }}
     >
       {children}

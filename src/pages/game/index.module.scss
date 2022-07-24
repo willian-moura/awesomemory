@@ -2,4 +2,6 @@
 
 .container {
   @extend %wh-full, %column-center;
+  position: relative;
+  overflow: hidden;
 }

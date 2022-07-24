@@ -9,11 +9,18 @@ import Panel from '@components/atoms/Panel'
 
 export default function FinishGameScreen() {
   const gameContext = useContext(GameContext)
-  const { startedAt, finishedAt } = gameContext
+  const { startedAt, finishedAt, resetData } = gameContext
 
   const gameDuration = getTimeDifferenceFormated(startedAt, finishedAt)
 
-  const onTryAgain = () => {}
+  const onTryAgain = () => {
+    resetData()
+  }
+
+  const onBackToMenu = () => {
+    resetData()
+    Router.push('/')
+  }
 
   return (
     <div className={styles.container}>
@@ -30,7 +37,7 @@ export default function FinishGameScreen() {
             <IconButton icon={'play'} onClick={onTryAgain} long important>
               Try again
             </IconButton>
-            <IconButton icon={'house'} onClick={() => Router.push('/')} long>
+            <IconButton icon={'house'} onClick={onBackToMenu} long>
               Back to menu
             </IconButton>
           </div>

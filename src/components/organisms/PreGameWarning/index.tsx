@@ -104,23 +104,25 @@ export default function PreGameWarning() {
   }
 
   return (
-    <Panel>
-      <div className={styles.container}>
-        <Text>
-          When you press the start button, the timer will{' '}
-          <b>start to running</b>
-        </Text>
-        <Text>Are you ready to play?</Text>
-        <IconButton
-          icon={'play'}
-          disabled={timer > 0}
-          long
-          important
-          onClick={onStart}
-        >
-          {buttonLabel}
-        </IconButton>
-      </div>
-    </Panel>
+    <div className={styles.container}>
+      <Panel>
+        <div className={'content'}>
+          <Text>
+            When you press the start button, the timer will{' '}
+            <b>start to running</b>
+          </Text>
+          <Text>Are you ready to play?</Text>
+          <IconButton
+            icon={'play'}
+            disabled={timer > 0}
+            long
+            important
+            onClick={onStart}
+          >
+            {buttonLabel}
+          </IconButton>
+        </div>
+      </Panel>
+    </div>
   )
 }

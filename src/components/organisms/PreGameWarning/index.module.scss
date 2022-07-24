@@ -1,4 +1,9 @@
 @import "src/styles/extends";
 .container {
-  @extend %column-center, %gap-2;
+  @extend %column-center, %wh-full;
+  padding: 1rem;
+
+  [class~=content]{
+    @extend %column-center, %gap-2,%w-full;
+  }
 }
