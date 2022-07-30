@@ -7,12 +7,22 @@ import Panel from '@components/atoms/Panel'
 import { useForm } from 'react-hook-form'
 import Input from '@components/molecules/Input'
 import Link from '@components/atoms/Link'
+import Router from 'next/router'
+import { useContext } from 'react'
+import { AuthContext, SignInData } from '@contexts/AuthContextData'
+import ErrorMessage from '@components/atoms/ErrorMessage'
+import PageTitle from '@components/molecules/PageTitle'
 
 const Login: NextPage = () => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit } = useForm<SignInData>()
+  const { signIn, error } = useContext(AuthContext)
 
-  const onLogin = handleSubmit((data) => {
-    console.log(JSON.stringify(data))
+  const onLogin = handleSubmit(async (data) => {
+    await signIn(data)
+      .then(() => {
+        Router.push('/menu')
+      })
+      .catch((e) => console.error(e))
   })
 
   return (
@@ -23,7 +33,7 @@ const Login: NextPage = () => {
       <Panel>
         <form onSubmit={onLogin}>
           <div className={'panel'}>
-            <Text title>Sign in to your account</Text>
+            <PageTitle>Sign in to your account</PageTitle>
             <div className={'form'}>
               <Input
                 label={'Email Address'}
@@ -45,6 +55,7 @@ const Login: NextPage = () => {
                 Sign in
               </IconButton>
             </div>
+            <ErrorMessage error={error} />
           </div>
         </form>
       </Panel>

@@ -1,0 +1,16 @@
+@import "src/styles/extends";
+
+.container {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: start;
+
+  [class~=back-icon]{
+    position: absolute;
+    left: 0;
+  }
+  [class~=title]{
+    padding-left: 2rem;
+  }
+}

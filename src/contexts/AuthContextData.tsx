@@ -21,20 +21,22 @@ const auth = getAuth()
 
 type AuthContextData = {
   user: any
+  loading: boolean
+  error: Error
   setUser: (user: any) => void
-  signUp: (data: SignUpData) => void
-  signIn: (data: SignInData) => void
+  signUp: (data: SignUpData) => Promise<any>
+  signIn: (data: SignInData) => Promise<any>
   signOut: () => void
 }
 
-type SignUpData = {
-  name: string
-  phone: string
+export type SignUpData = {
+  // name: string
+  // phone: string
   email: string
   password: string
 }
 
-type SignInData = {
+export type SignInData = {
   email: string
   password: string
 }
@@ -47,17 +49,26 @@ type AuthContextProviderProps = {
 
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [user, setUser] = useState<any>({})
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<any>(null)
 
   const signUp = async (data: SignUpData) => {
+    clearError()
+    setLoading(true)
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.password)
       return signIn({ email: data.email, password: data.password })
     } catch (e) {
-      return e
+      setError(e)
+      throw e
+    } finally {
+      setLoading(false)
     }
   }
 
   const signIn = async (data: SignInData) => {
+    clearError()
+    setLoading(true)
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -65,6 +76,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
         data.password
       )
       const user = userCredential.user
+      setUser(user)
 
       if (typeof window !== 'undefined') {
         const { uid, email } = user
@@ -75,7 +87,10 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       }
       return user
     } catch (e) {
-      return e
+      setError(e)
+      throw e
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -93,11 +108,17 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     }
   }
 
+  const clearError = () => {
+    setError(null)
+  }
+
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
+        loading,
+        error,
         signUp,
         signIn,
         signOut

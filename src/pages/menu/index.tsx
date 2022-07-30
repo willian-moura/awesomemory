@@ -6,12 +6,20 @@ import IconButton from '@components/molecules/IconButton'
 import Divider from '@components/atoms/Divider'
 import Logo from '@components/atoms/Logo'
 import Router from 'next/router'
+import { useContext } from 'react'
+import { AuthContext } from '@contexts/AuthContextData'
 
 const Home: NextPage = () => {
-  const userName = 'Test User'
+  const { user, signOut } = useContext(AuthContext)
+  const userName = user?.email
 
   const onPlay = () => {
     Router.push('/game')
+  }
+
+  const onLogout = async () => {
+    await signOut()
+    Router.push('/')
   }
 
   return (
@@ -35,7 +43,12 @@ const Home: NextPage = () => {
               Ranking
             </IconButton>
             <Divider />
-            <IconButton icon={'arrow-right-from-bracket'} long important>
+            <IconButton
+              icon={'arrow-right-from-bracket'}
+              long
+              important
+              onClick={onLogout}
+            >
               Logout
             </IconButton>
           </div>

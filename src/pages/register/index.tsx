@@ -7,23 +7,34 @@ import Panel from '@components/atoms/Panel'
 import { useForm } from 'react-hook-form'
 import Input from '@components/molecules/Input'
 import Link from '@components/atoms/Link'
+import { useContext } from 'react'
+import { AuthContext, SignUpData } from '@contexts/AuthContextData'
+import { useMutation } from '@apollo/client'
+import { CREATE_USER } from '@graphql/mutations'
+import Router from 'next/router'
+import ErrorMessage from '@components/atoms/ErrorMessage'
+import PageTitle from '@components/molecules/PageTitle'
 
 const Register: NextPage = () => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit } = useForm<SignUpData>()
+  const { signUp, error } = useContext(AuthContext)
+  const [createUser] = useMutation(CREATE_USER)
 
-  const onRegister = handleSubmit((data) => {
-    console.log(JSON.stringify(data))
+  const onRegister = handleSubmit(async (data) => {
+    await signUp(data)
+      .then((user) => {
+        createUser({ variables: { userId: user.uid, userEmail: user.email } })
+      })
+      .then(() => Router.push('/menu'))
+      .catch((e) => console.error(e))
   })
 
   return (
     <div className={styles.container}>
-      <div className={'logo'}>
-        <Logo large />
-      </div>
       <Panel>
         <form onSubmit={onRegister}>
           <div className={'panel'}>
-            <Text title>Create Your Account</Text>
+            <PageTitle>Create Your Account</PageTitle>
             <div className={'form'}>
               <Input
                 label={'User Name'}
@@ -62,6 +73,7 @@ const Register: NextPage = () => {
                 Sign up
               </IconButton>
             </div>
+            <ErrorMessage error={error} />
           </div>
         </form>
       </Panel>
