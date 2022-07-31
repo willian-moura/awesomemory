@@ -3,7 +3,7 @@ import { Props } from '../../../types/globals'
 import { useMemo } from 'react'
 
 interface ErrorMessageProps extends Props {
-  error?: Error
+  error?: Error | any
   align?: 'left' | 'center' | 'right'
 }
 
