@@ -13,7 +13,7 @@ export const CREATE_USER = gql`
       ]
       on_conflict: {
         constraint: users_pkey
-        update_columns: [last_seen, email, userName]
+        update_columns: [lastSeen, email, userName]
       }
     ) {
       returning {
