@@ -18,7 +18,7 @@ export default function PageTitle({ children, onBack }: PageTitleProps) {
   return (
     <div className={styles.container}>
       <span className={'back-icon'} onClick={handleBack}>
-        <Icon icon={'arrow-left'} />
+        <Icon icon={'arrow-left'} color={'var(--text-color)'} />
       </span>
       <span className={'title'}>
         <Text title>{children}</Text>

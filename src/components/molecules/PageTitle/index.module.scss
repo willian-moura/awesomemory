@@ -1,6 +1,7 @@
 @import "src/styles/extends";
 
 .container {
+  @extend %w-full;
   position: relative;
   display: inline-flex;
   justify-content: center;

@@ -10,12 +10,20 @@ import { useContext } from 'react'
 import { AuthContext } from '@contexts/AuthContextData'
 import AuthMiddleware from '../../midlewares/auth'
 
-const Home: NextPage = () => {
+const Menu: NextPage = () => {
   const { user, signOut } = useContext(AuthContext)
   const userName = user?.userName
 
   const onPlay = () => {
     Router.push('/game')
+  }
+
+  const onRanking = () => {
+    Router.push('/ranking')
+  }
+
+  const onFoundIcons = () => {
+    Router.push('/found-icons')
   }
 
   const onLogout = async () => {
@@ -41,8 +49,11 @@ const Home: NextPage = () => {
               <IconButton icon={'gamepad'} long onClick={onPlay}>
                 Play
               </IconButton>
-              <IconButton icon={'list-ol'} long>
+              <IconButton icon={'list-ol'} long onClick={onRanking}>
                 Ranking
+              </IconButton>
+              <IconButton icon={'icons'} long onClick={onFoundIcons}>
+                Found icons
               </IconButton>
               <Divider />
               <IconButton
@@ -61,4 +72,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Menu

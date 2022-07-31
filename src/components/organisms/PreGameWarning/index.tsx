@@ -7,6 +7,9 @@ import { useContext, useEffect, useState } from 'react'
 import { GameContext } from '@contexts/GameContextData'
 import { sleep, waitTimer } from '@utils/promisse-helpers'
 import { getRandomIcons } from '../../../services/games'
+import Spin from '@components/molecules/Spin'
+import Router from 'next/router'
+import Button from '@components/atoms/Button'
 
 const ICONS = [
   {
@@ -80,6 +83,7 @@ export default function PreGameWarning() {
   const { startGame } = gameContext
   const [timer, setTimer] = useState(0)
   const [icons, setIcons] = useState<Array<icon>>([])
+  const [loadingIcons, setLoadingIcons] = useState(true)
 
   const buttonLabel = `Start${timer > 0 ? ` ${timer}` : ''}`
 
@@ -93,6 +97,7 @@ export default function PreGameWarning() {
     try {
       const data = await getRandomIcons()
       setIcons(data)
+      setLoadingIcons(false)
     } catch (e) {
       console.error(e)
     }
@@ -101,6 +106,10 @@ export default function PreGameWarning() {
   useEffect(() => {
     fetchIcons()
   }, [])
+
+  if (loadingIcons) {
+    return <Spin />
+  }
 
   return (
     <div className={styles.container}>
@@ -111,15 +120,20 @@ export default function PreGameWarning() {
             <b>start to running</b>
           </Text>
           <Text>Are you ready to play?</Text>
-          <IconButton
-            icon={'play'}
-            disabled={timer > 0}
-            long
-            important
-            onClick={onStart}
-          >
-            {buttonLabel}
-          </IconButton>
+          <div className={'actions'}>
+            <IconButton
+              icon={'play'}
+              disabled={timer > 0}
+              long
+              important
+              onClick={onStart}
+            >
+              {buttonLabel}
+            </IconButton>
+            <Button long onClick={() => Router.back()}>
+              Back to menu
+            </Button>
+          </div>
         </div>
       </Panel>
     </div>

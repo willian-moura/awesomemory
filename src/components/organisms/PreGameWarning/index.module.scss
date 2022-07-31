@@ -6,4 +6,8 @@
   [class~=content]{
     @extend %column-center, %gap-2,%w-full;
   }
+
+  [class~=actions]{
+    @extend %column-center, %gap-1,%w-full;
+  }
 }

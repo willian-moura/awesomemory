@@ -17,3 +17,10 @@ export type card = {
   focused: boolean
   icon: icon
 }
+
+export type rankingItem = {
+  id: number
+  user: any
+  duration: number
+  createdAt: string
+}

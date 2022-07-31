@@ -1,5 +1,9 @@
 import { client } from '@graphql/apollo'
-import { GET_RANDOM_ICONS, GET_USERS_BY_UID } from '@graphql/queries'
+import {
+  GET_RANDOM_ICONS,
+  GET_RANKING,
+  GET_USERS_BY_UID
+} from '@graphql/queries'
 import { SAVE_FOUND_ICONS, SAVE_GAME } from '@graphql/mutations'
 import { icon } from '../types/globals'
 
@@ -13,6 +17,14 @@ export const getRandomIcons = async (seed = Math.random(), take = 2) => {
   })
 
   return res?.data?.list_icon_random
+}
+
+export const getRanking = async () => {
+  const res = await client.query({
+    query: GET_RANKING
+  })
+
+  return res?.data?.games
 }
 
 export const saveGameToUser = async (userUid: string, duration: number) => {
