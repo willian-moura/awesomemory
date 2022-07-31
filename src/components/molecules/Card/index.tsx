@@ -26,7 +26,7 @@ export default function Card({ onClick, card, size }: CardProps) {
   }
 
   const onClickCard = () => {
-    onClick(card)
+    onClick && onClick(card)
   }
 
   return (

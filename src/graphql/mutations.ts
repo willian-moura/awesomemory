@@ -7,7 +7,7 @@ export const CREATE_USER = gql`
         {
           id: $userId
           email: $userEmail
-          last_seen: "now()"
+          lastSeen: "now()"
           userName: $userName
         }
       ]
@@ -21,6 +21,36 @@ export const CREATE_USER = gql`
         email
         userName
       }
+    }
+  }
+`
+
+export const SAVE_GAME = gql`
+  mutation ($userId: String!, $duration: bigint) {
+    insert_games(
+      objects: [{ userId: $userId, duration: $duration, createdAt: "now()" }]
+      on_conflict: {
+        constraint: games_pkey
+        update_columns: [duration, createdAt]
+      }
+    ) {
+      returning {
+        id
+      }
+    }
+  }
+`
+
+export const SAVE_FOUND_ICONS = gql`
+  mutation ($objects: [found_icons_insert_input!] = {}) {
+    insert_found_icons(
+      objects: $objects
+      on_conflict: {
+        constraint: found_icons_pkey
+        update_columns: [name, family, createdAt]
+      }
+    ) {
+      affected_rows
     }
   }
 `

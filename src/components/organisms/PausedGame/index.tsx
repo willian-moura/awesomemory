@@ -5,8 +5,12 @@ import { GameContext } from '@contexts/GameContextData'
 import Router from 'next/router'
 
 export default function PausedGame() {
-  const gameContext = useContext(GameContext)
-  const { toggleIsMenuOpen } = gameContext
+  const { toggleIsMenuOpen, resetData } = useContext(GameContext)
+
+  const onQuit = () => {
+    resetData()
+    Router.push('/menu')
+  }
 
   const actions = [
     {
@@ -26,7 +30,7 @@ export default function PausedGame() {
       key: 'quit',
       label: 'Quit',
       icon: 'door-open',
-      onClick: () => Router.push('/menu')
+      onClick: onQuit
     }
   ]
 

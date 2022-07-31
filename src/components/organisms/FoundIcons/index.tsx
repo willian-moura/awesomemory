@@ -12,8 +12,8 @@ export default function FoundIcons() {
   return (
     <div className={styles.container}>
       <FoundIconsButton />
-      {foundIcons.map((icon) => (
-        <FoundCard key={icon.uuid} icon={icon} />
+      {foundIcons.map((icon, index) => (
+        <FoundCard key={`${icon.family}-${icon.name}`} icon={icon} id={index} />
       ))}
     </div>
   )

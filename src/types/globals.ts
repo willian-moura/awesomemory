@@ -7,7 +7,6 @@ export type Props = {
 }
 
 export type icon = {
-  uuid: string
   name: IconName | string
   family: IconPrefix | string
 }

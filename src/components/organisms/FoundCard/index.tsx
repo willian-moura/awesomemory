@@ -5,12 +5,13 @@ import Text from '@components/atoms/Text'
 import Tag from '@components/atoms/Tag'
 
 type FoundCardProps = Props & {
+  id: number
   icon: icon
 }
 
-export default function FoundCard({ icon }: FoundCardProps) {
+export default function FoundCard({ id, icon }: FoundCardProps) {
   const card = {
-    id: parseInt(icon.uuid),
+    id,
     icon,
     turned: true,
     focused: false
