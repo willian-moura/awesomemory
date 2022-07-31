@@ -7,8 +7,8 @@ export type Props = {
 }
 
 export type icon = {
-  name: IconName | string
-  family: IconPrefix | string
+  name: IconName
+  family: IconPrefix
 }
 
 export type card = {
