@@ -1,5 +1,9 @@
 import { createContext, ReactNode, useState } from 'react'
 import { card, icon } from '../types/globals'
+import { getTimeDifferenceFormated } from '@utils/date-helpers'
+import moment from 'moment'
+import { saveGameToUser, saveIconsToGame } from '../services/games'
+import { LOCAL_STORAGE_USER } from '../constants/globals'
 
 type GameContextData = {
   startedAt: Date | null
@@ -60,8 +64,20 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
     setStartedAt(new Date())
   }
 
-  const finishGame = () => {
-    setFinishedAt(new Date())
+  const finishGame = async (updatedFoundIcons: Array<icon>) => {
+    try {
+      const now = new Date()
+      setFinishedAt(now)
+
+      const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER) || '')
+      const duration = moment(now).diff(startedAt, 'milliseconds')
+
+      const res = await saveGameToUser(user.uid, duration)
+      console.log('res', res?.id)
+      await saveIconsToGame(res?.id, updatedFoundIcons)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   const turnCard = (cardId: number) => {
@@ -98,16 +114,22 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
       return false
     }
 
-    const iconUuid = turnedCards[0].icon.uuid
-    if (turnedCards[1].icon.uuid === iconUuid) {
-      const newCards = cards.filter((card) => card.icon.uuid !== iconUuid)
+    const iconFamily = turnedCards[0].icon.family
+    const iconName = turnedCards[0].icon.name
+    if (
+      turnedCards[1].icon.family === iconFamily &&
+      turnedCards[1].icon.name === iconName
+    ) {
+      const newCards = cards.filter(
+        (card) => card.icon.family !== iconFamily || card.icon.name !== iconName
+      )
       const newFoundIcons = [...foundIcons, turnedCards[0].icon]
       setCards([...newCards])
       setFoundIcons([...newFoundIcons])
       setTurnedCards([])
 
       if (!newCards.length) {
-        finishGame()
+        finishGame(newFoundIcons)
       }
       return true
     }

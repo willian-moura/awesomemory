@@ -1,0 +1,5 @@
+@import "src/styles/extends";
+
+.container {
+  @extend %wh-full, %column-start, %gap-1;
+}

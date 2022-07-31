@@ -20,9 +20,21 @@
   align-items: flex-start;
 }
 
+%column-start-center {
+  @extend %flex-column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 %inline-center {
   @extend %flex-inline;
   justify-content: center;
+  align-items: center;
+}
+
+%inline-between {
+  @extend %flex-inline;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -56,4 +68,16 @@
 
 %shadow {
   box-shadow: 0 4px 4px rgba(195, 198, 209, 0.15);
+}
+
+%scroll-x-auto {
+  overflow-x: auto;
+}
+
+%scroll-y-auto {
+  overflow-y: auto;
+}
+
+%scroll-auto {
+  overflow: auto;
 }

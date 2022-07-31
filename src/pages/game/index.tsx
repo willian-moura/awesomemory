@@ -7,7 +7,7 @@ import InGame from '@components/organisms/InGame'
 import PausedGame from '@components/organisms/PausedGame'
 import Drawer from '@components/atoms/Drawer'
 import FoundIconsButton from '@components/molecules/FoundIconsButton'
-import FoundIcons from '@components/organisms/FoundIcons'
+import FoundIcons from '@components/organisms/FoundIconsMenu'
 import FinishGameScreen from '@components/organisms/FinishGameScreen'
 import AuthMiddleware from '../../midlewares/auth'
 

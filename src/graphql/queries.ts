@@ -9,3 +9,35 @@ export const GET_USERS_BY_UID = gql`
     }
   }
 `
+
+export const GET_RANDOM_ICONS = gql`
+  query getUser($seed: seed_float!, $take: Int) {
+    list_icon_random(args: { seed: $seed }, limit: $take) {
+      name
+      family
+    }
+  }
+`
+
+export const GET_RANKING = gql`
+  query getGames {
+    games(order_by: { duration: asc }) {
+      id
+      duration
+      createdAt
+      user {
+        userName
+      }
+    }
+  }
+`
+
+export const GET_FOUND_ICONS_BY_USER = gql`
+  query getFoundIcons($uid: String!) {
+    found_icons(where: { game: { userId: { _eq: $uid } } }, distinct_on: name) {
+      name
+      family
+      createdAt
+    }
+  }
+`

@@ -8,6 +8,7 @@ type TextProps = Props & {
   bold?: boolean
   title?: boolean
   subtitle?: boolean
+  size?: '12px' | '14px' | '16px' | '18px'
 }
 
 type Align = 'left' | 'center' | 'right'
@@ -19,7 +20,8 @@ export default function Text({
   textAlign = 'center',
   bold = false,
   title = false,
-  subtitle = false
+  subtitle = false,
+  size
 }: TextProps) {
   const classes = cx({
     container: true,
@@ -30,5 +32,9 @@ export default function Text({
     ['align-right']: textAlign === 'right',
     ['dk-text']: bold
   })
-  return <div className={classes}>{children}</div>
+  return (
+    <div className={classes} style={{ fontSize: size }}>
+      {children}
+    </div>
+  )
 }

@@ -1,0 +1,8 @@
+@import "src/styles/extends";
+@import "src/styles/variables";
+
+.container {
+  @extend %wh-full;
+  background-color: $white;
+  z-index: 1;
+}

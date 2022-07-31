@@ -7,7 +7,6 @@ export type Props = {
 }
 
 export type icon = {
-  uuid: string
   name: IconName | string
   family: IconPrefix | string
 }
@@ -17,4 +16,11 @@ export type card = {
   turned: boolean
   focused: boolean
   icon: icon
+}
+
+export type rankingItem = {
+  id: number
+  user: any
+  duration: number
+  createdAt: string
 }

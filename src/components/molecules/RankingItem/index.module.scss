@@ -1,0 +1,32 @@
+@import "src/styles/extends";
+@import "src/styles/variables";
+
+.container {
+  @extend %w-full, %inline-start-center, %gap-1;
+  padding: 0.5rem 1rem;
+  background-color: $lt-gravy;
+  height: 78px;
+  border-radius: 8px;
+
+  [class~=position]{
+    @extend %inline-center;
+
+    min-width: 48px;
+    min-height: 48px;
+
+    border-radius: 100px;
+    background-color: $dk-text-color;
+    color: $white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  [class~=details]{
+    @extend %column-start-center, %wh-full;
+    padding: 0 8px;
+  }
+  [class~=bottom-info]{
+    @extend %inline-between, %wh-full;
+    height: fit-content;
+  }
+}

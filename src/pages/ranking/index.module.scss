@@ -1,0 +1,14 @@
+@import "src/styles/extends";
+
+.container {
+  @extend %column-center, %wh-full, %gap-4;
+  padding: 16px;
+
+  [class~=panel] {
+    @extend %column-start, %gap-4, %wh-full;
+
+    [class~=ranking]{
+      @extend %column-center, %gap-1, %wh-full, %scroll-y-auto;
+    }
+  }
+}
