@@ -11,7 +11,7 @@ import { AuthContext } from '@contexts/AuthContextData'
 
 const Home: NextPage = () => {
   const { user, signOut } = useContext(AuthContext)
-  const userName = user?.email
+  const userName = user?.userName
 
   const onPlay = () => {
     Router.push('/game')

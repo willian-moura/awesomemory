@@ -8,21 +8,36 @@ import { useForm } from 'react-hook-form'
 import Input from '@components/molecules/Input'
 import Link from '@components/atoms/Link'
 import Router from 'next/router'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext, SignInData } from '@contexts/AuthContextData'
 import ErrorMessage from '@components/atoms/ErrorMessage'
 import PageTitle from '@components/molecules/PageTitle'
+import { client } from '@graphql/apollo'
+import { GET_USERS_BY_UID } from '@graphql/queries'
 
 const Login: NextPage = () => {
   const { register, handleSubmit } = useForm<SignInData>()
-  const { signIn, error } = useContext(AuthContext)
+  const { signIn, error: authError, setUser } = useContext(AuthContext)
+
+  const [loading, setLoading] = useState(false)
 
   const onLogin = handleSubmit(async (data) => {
-    await signIn(data)
-      .then(() => {
-        Router.push('/menu')
+    setLoading(true)
+    try {
+      const user = await signIn(data)
+      const res = await client.query({
+        query: GET_USERS_BY_UID,
+        variables: {
+          uid: user.uid
+        }
       })
-      .catch((e) => console.error(e))
+      setUser(res?.data?.users[0])
+      Router.push('/menu')
+    } catch (e) {
+      console.error(e)
+    } finally {
+      setLoading(false)
+    }
   })
 
   return (
@@ -51,11 +66,17 @@ const Login: NextPage = () => {
               />
             </div>
             <div className={'actions'}>
-              <IconButton type={'submit'} icon={'sign-in-alt'} long important>
+              <IconButton
+                loading={loading}
+                type={'submit'}
+                icon={'sign-in-alt'}
+                long
+                important
+              >
                 Sign in
               </IconButton>
             </div>
-            <ErrorMessage error={error} />
+            <ErrorMessage error={authError} />
           </div>
         </form>
       </Panel>

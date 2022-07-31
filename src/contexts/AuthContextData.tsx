@@ -23,6 +23,7 @@ type AuthContextData = {
   user: any
   loading: boolean
   error: Error
+  setError: (e: Error) => void
   setUser: (user: any) => void
   signUp: (data: SignUpData) => Promise<any>
   signIn: (data: SignInData) => Promise<any>
@@ -30,10 +31,10 @@ type AuthContextData = {
 }
 
 export type SignUpData = {
-  // name: string
-  // phone: string
+  userName: string
   email: string
   password: string
+  confirmPassword: string
 }
 
 export type SignInData = {
@@ -76,7 +77,6 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
         data.password
       )
       const user = userCredential.user
-      setUser(user)
 
       if (typeof window !== 'undefined') {
         const { uid, email } = user
@@ -119,6 +119,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
         setUser,
         loading,
         error,
+        setError,
         signUp,
         signIn,
         signOut

@@ -7,14 +7,23 @@ type Props = ButtonProps & {
   icon: IconProp
   iconColor?: string
   iconSize?: SizeProp
+  loading?: boolean
 }
 
-export default function IconButton(props: Props) {
+export default function IconButton({ loading = false, ...props }: Props) {
   return (
     <Button {...props}>
       <div className={styles.container}>
         <span>{props?.children}</span>
-        <Icon icon={props.icon} color={props.iconColor} size={props.iconSize} />
+        {loading ? (
+          <Icon icon={'circle-notch'} spin />
+        ) : (
+          <Icon
+            icon={props.icon}
+            color={props.iconColor}
+            size={props.iconSize}
+          />
+        )}
       </div>
     </Button>
   )
