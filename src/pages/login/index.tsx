@@ -12,8 +12,7 @@ import { useContext, useState } from 'react'
 import { AuthContext, SignInData } from '@contexts/AuthContextData'
 import ErrorMessage from '@components/atoms/ErrorMessage'
 import PageTitle from '@components/molecules/PageTitle'
-import { client } from '@graphql/apollo'
-import { GET_USERS_BY_UID } from '@graphql/queries'
+import { getUserByUid } from '../../services/users'
 
 const Login: NextPage = () => {
   const { register, handleSubmit } = useForm<SignInData>()
@@ -24,14 +23,10 @@ const Login: NextPage = () => {
   const onLogin = handleSubmit(async (data) => {
     setLoading(true)
     try {
-      const user = await signIn(data)
-      const res = await client.query({
-        query: GET_USERS_BY_UID,
-        variables: {
-          uid: user.uid
-        }
-      })
-      setUser(res?.data?.users[0])
+      const { uid } = await signIn(data)
+      const user = await getUserByUid(uid)
+
+      setUser(user)
       Router.push('/menu')
     } catch (e) {
       console.error(e)

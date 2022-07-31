@@ -26,7 +26,7 @@ export default function PausedGame() {
       key: 'quit',
       label: 'Quit',
       icon: 'door-open',
-      onClick: () => Router.push('/')
+      onClick: () => Router.push('/menu')
     }
   ]
 

@@ -5,6 +5,7 @@ import {
   getAuth,
   signInWithEmailAndPassword
 } from '@firebase/auth'
+import { LOCAL_STORAGE_USER } from '../constants/globals'
 
 if (!getApps().length) {
   initializeApp({
@@ -80,10 +81,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
       if (typeof window !== 'undefined') {
         const { uid, email } = user
-        localStorage.setItem(
-          '@awesomemory:user',
-          JSON.stringify({ uid, email })
-        )
+        localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify({ uid, email }))
       }
       return user
     } catch (e) {
@@ -100,7 +98,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
 
       setUser(null)
       if (typeof window !== 'undefined') {
-        localStorage.removeItem('@awesomemory:user')
+        localStorage.removeItem(LOCAL_STORAGE_USER)
       }
       return response
     } catch (e) {

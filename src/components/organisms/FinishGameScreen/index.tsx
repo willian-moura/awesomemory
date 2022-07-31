@@ -19,7 +19,7 @@ export default function FinishGameScreen() {
 
   const onBackToMenu = () => {
     resetData()
-    Router.push('/')
+    Router.push('/menu')
   }
 
   return (
