@@ -5,12 +5,13 @@ import styles from './app.module.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
 import { GameContextProvider } from '@contexts/GameContextData'
 import { ApolloProvider } from '@apollo/client'
 import { AuthContextProvider } from '@contexts/AuthContextData'
 import { initializeApollo } from '@graphql/apollo'
 
-library.add(fas, fab)
+library.add(fas, fab, far)
 
 function MyApp({ Component, pageProps }: AppProps) {
   const client = initializeApollo()
