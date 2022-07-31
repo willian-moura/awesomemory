@@ -13,7 +13,9 @@ type GameContextData = {
   cards: Array<card>
   foundIcons: Array<icon>
   turnedCards: Array<card>
+  setIsFoundDrawerOpen: (value: boolean) => void
   toggleIsFoundDrawerOpen: () => void
+  setIsMenuOpen: (value: boolean) => void
   toggleIsMenuOpen: () => void
   setCards: (cards: Array<card>) => void
   setFoundIcons: (icons: Array<icon>) => void
@@ -177,6 +179,8 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
         verifyIfFound,
         setCards,
         setFoundIcons,
+        setIsFoundDrawerOpen,
+        setIsMenuOpen,
         toggleIsFoundDrawerOpen,
         toggleIsMenuOpen,
         resetData

@@ -40,3 +40,34 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+  background-color: #C7C7C7;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  visibility: hidden;
+  background: #eee;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  visibility: visible;
+  background-color: #636363;
+}

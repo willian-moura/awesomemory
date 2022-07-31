@@ -4,9 +4,14 @@ import { useContext } from 'react'
 import { GameContext } from '@contexts/GameContextData'
 import Router from 'next/router'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import useOutsideClick from '../../../hooks/useOutsideClick'
 
 export default function PausedGame() {
-  const { toggleIsMenuOpen, resetData } = useContext(GameContext)
+  const { setIsMenuOpen, resetData } = useContext(GameContext)
+
+  const ref = useOutsideClick(() => {
+    setIsMenuOpen(false)
+  })
 
   const onQuit = () => {
     resetData()
@@ -19,7 +24,7 @@ export default function PausedGame() {
       label: 'Resume',
       icon: 'play',
       important: true,
-      onClick: toggleIsMenuOpen
+      onClick: () => setIsMenuOpen(false)
     },
     /*{
       key: 'dark-mode',
@@ -36,7 +41,7 @@ export default function PausedGame() {
   ]
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={ref}>
       <div className={'actions'}>
         {actions.map((action) => (
           <IconButton

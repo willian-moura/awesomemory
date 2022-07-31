@@ -3,8 +3,8 @@
 
 .container{
   background-color: transparent;
-  width: min(20vw, 9vh);
-  height: min(20vw, 9vh);
+  width: min(20vw, 20vh);
+  height: min(20vw, 20vh);
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 
   [class~=inner]{

@@ -15,7 +15,11 @@ import PageTitle from '@components/molecules/PageTitle'
 import { getUserByUid } from '../../services/users'
 
 const Login: NextPage = () => {
-  const { register, handleSubmit } = useForm<SignInData>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<SignInData>()
   const { signIn, error: authError, setUser } = useContext(AuthContext)
 
   const [loading, setLoading] = useState(false)
@@ -51,14 +55,26 @@ const Login: NextPage = () => {
                 name={'email'}
                 icon={'envelope'}
                 register={register}
+                validation={{ required: 'The email is required!' }}
               />
+              {errors.email && (
+                <ErrorMessage align={'left'}>
+                  {errors.email?.message}
+                </ErrorMessage>
+              )}
               <Input
                 label={'Password'}
                 type={'password'}
                 name={'password'}
                 icon={'lock'}
                 register={register}
+                validation={{ required: 'The password is required!' }}
               />
+              {errors.password && (
+                <ErrorMessage align={'left'}>
+                  {errors.password?.message}
+                </ErrorMessage>
+              )}
             </div>
             <div className={'actions'}>
               <IconButton

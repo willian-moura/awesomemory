@@ -1,5 +1,6 @@
 @import "src/styles/variables";
 @import "src/styles/extends";
+@import "src/styles/mixins";
 
 .container {
   @extend %inline-center, %w-full;
@@ -9,4 +10,10 @@
   border-top-right-radius: 8px;
   cursor: pointer;
   z-index: 1;
+
+
+
+  @include desktop{
+    width: 25vw;
+  }
 }

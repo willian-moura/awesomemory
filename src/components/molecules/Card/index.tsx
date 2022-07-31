@@ -21,8 +21,8 @@ export default function Card({ onClick, card, size }: CardProps) {
   })
 
   const style = {
-    minWidth: size,
-    minHeight: size
+    width: size,
+    height: size
   }
 
   const onClickCard = () => {

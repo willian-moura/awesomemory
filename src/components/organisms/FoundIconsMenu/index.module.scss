@@ -1,8 +1,13 @@
 @import "src/styles/extends";
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .container {
-  @extend %wh-full;
+  @extend %h-full;
   background-color: $white;
   z-index: 1;
+
+  @include desktop{
+    width: 25vw;
+  }
 }

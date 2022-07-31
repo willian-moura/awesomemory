@@ -3,6 +3,7 @@ import { icon, Props } from '../../../types/globals'
 import Card from '@components/molecules/Card'
 import Text from '@components/atoms/Text'
 import Tag from '@components/atoms/Tag'
+import { IS_MOBILE, MOBILE_BREAKPOINT } from '../../../constants/globals'
 
 type FoundCardProps = Props & {
   id: number
@@ -19,7 +20,12 @@ export default function FoundCard({ id, icon }: FoundCardProps) {
 
   return (
     <div className={styles.container}>
-      <Card card={card} size={'25vw'} />
+      <div>
+        <Card
+          card={card}
+          size={window.innerWidth <= MOBILE_BREAKPOINT ? '25vw' : '10vh'}
+        />
+      </div>
       <div className={'details'}>
         <Text bold>{icon.name}</Text>
         <Tag>
