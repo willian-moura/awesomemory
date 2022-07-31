@@ -1,5 +1,6 @@
 @import "src/styles/extends";
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .container {
   @extend %column-center, %wh-full;
@@ -10,5 +11,9 @@
 
   [class~=actions]{
     @extend %column-center, %w-full, %gap-1;
+  }
+
+  @include desktop{
+    background-color: $white;
   }
 }

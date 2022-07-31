@@ -1,5 +1,6 @@
 @import "src/styles/extends";
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .container{
   @extend %column-center, %wh-full;
@@ -17,5 +18,11 @@
 
   [class~=actions]{
     @extend %column-start, %w-full, %gap-1;
+  }
+
+  @include desktop {
+    &>div {
+      width: 25vw;
+    }
   }
 }

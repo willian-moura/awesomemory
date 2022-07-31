@@ -10,6 +10,7 @@ import FoundIconsButton from '@components/molecules/FoundIconsButton'
 import FoundIcons from '@components/organisms/FoundIconsMenu'
 import FinishGameScreen from '@components/organisms/FinishGameScreen'
 import AuthMiddleware from '../../midlewares/auth'
+import { MOBILE_BREAKPOINT } from '../../constants/globals'
 
 const Game: NextPage = () => {
   const gameContext = useContext(GameContext)
@@ -20,12 +21,23 @@ const Game: NextPage = () => {
       <div className={styles.container}>
         {startedAt ? (
           <>
-            <Drawer open={isMenuOpen} direction={'left-right'}>
+            <Drawer
+              open={isMenuOpen}
+              direction={'left-right'}
+              width={window.innerWidth <= MOBILE_BREAKPOINT ? '100%' : '25vw'}
+            >
               <PausedGame />
             </Drawer>
             <InGame />
-            <FoundIconsButton />
-            <Drawer open={isFoundDrawerOpen} direction={'bottom-top'}>
+            <div className={'found-icons-btn'}>
+              <FoundIconsButton />
+            </div>
+            <Drawer
+              style={{ left: 0 }}
+              open={isFoundDrawerOpen}
+              direction={'bottom-top'}
+              width={window.innerWidth <= MOBILE_BREAKPOINT ? '100%' : '25vw'}
+            >
               <FoundIcons />
             </Drawer>
           </>

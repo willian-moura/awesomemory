@@ -11,6 +11,7 @@ type DrawerProps = {
   width?: string
   height?: string
   delay?: string
+  style?: any
 }
 
 export default function Drawer({
@@ -19,7 +20,8 @@ export default function Drawer({
   direction,
   width = '100%',
   height = '100%',
-  delay = '.3s'
+  delay = '.3s',
+  style = {}
 }: DrawerProps) {
   const classes = cx({
     container: true,
@@ -27,14 +29,15 @@ export default function Drawer({
     [direction]: true
   })
 
-  const style = {
+  const styleObj = {
     width,
     height,
-    transition: delay
+    transition: delay,
+    ...style
   }
 
   return (
-    <div className={classes} style={style}>
+    <div className={classes} style={styleObj}>
       {children}
     </div>
   )
