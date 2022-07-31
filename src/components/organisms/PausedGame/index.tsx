@@ -20,12 +20,12 @@ export default function PausedGame() {
       important: true,
       onClick: toggleIsMenuOpen
     },
-    {
+    /*{
       key: 'dark-mode',
       label: 'Dark mode: Off',
       icon: 'moon',
       onClick: () => {}
-    },
+    },*/
     {
       key: 'quit',
       label: 'Quit',
