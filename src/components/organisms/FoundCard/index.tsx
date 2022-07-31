@@ -3,7 +3,7 @@ import { icon, Props } from '../../../types/globals'
 import Card from '@components/molecules/Card'
 import Text from '@components/atoms/Text'
 import Tag from '@components/atoms/Tag'
-import { IS_MOBILE, MOBILE_BREAKPOINT } from '../../../constants/globals'
+import { MOBILE_BREAKPOINT } from '../../../constants/globals'
 
 type FoundCardProps = Props & {
   id: number
