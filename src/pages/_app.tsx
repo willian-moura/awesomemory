@@ -2,7 +2,7 @@ import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import BackgroundImage from '@components/atoms/BackgroundImage'
 import styles from './app.module.scss'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { IconPack, library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -11,7 +11,7 @@ import { ApolloProvider } from '@apollo/client'
 import { AuthContextProvider } from '@contexts/AuthContextData'
 import { initializeApollo } from '@graphql/apollo'
 
-library.add(fas, fab, far)
+library.add(fas, fab, far as IconPack)
 
 function MyApp({ Component, pageProps }: AppProps) {
   const client = initializeApollo()

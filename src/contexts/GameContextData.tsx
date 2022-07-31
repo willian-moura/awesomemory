@@ -18,7 +18,6 @@ type GameContextData = {
   setCards: (cards: Array<card>) => void
   setFoundIcons: (icons: Array<icon>) => void
   startGame: (icons: Array<icon>) => void
-  finishGame: () => void
   turnCard: (cardId: number) => void
   turnAllCardsDown: () => void
   focusCard: (cardId: number) => void
@@ -171,7 +170,6 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
         turnedCards,
         foundIcons,
         startGame,
-        finishGame,
         turnCard,
         turnAllCardsDown,
         focusCard,

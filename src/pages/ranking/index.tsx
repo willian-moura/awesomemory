@@ -14,9 +14,7 @@ const Ranking: NextPage = () => {
           <div className={'panel'}>
             <PageTitle>Ranking of best games</PageTitle>
             <div className={'ranking'}>
-              <ClientOnly>
-                <RankingList />
-              </ClientOnly>
+              <RankingList />
             </div>
           </div>
         </Panel>

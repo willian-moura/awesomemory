@@ -1,11 +1,11 @@
 import styles from './index.module.scss'
-import { Props } from '../../../types/globals'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '@contexts/AuthContextData'
 import { LOCAL_STORAGE_USER } from '../constants/globals'
 import Router, { useRouter } from 'next/router'
 import { getUserByUid } from '../services/users'
 import Icon from '@components/atoms/Icon'
+import { Props } from '../types/globals'
 
 export default function AuthMiddleware({ children }: Props) {
   const { user, setUser } = useContext(AuthContext)

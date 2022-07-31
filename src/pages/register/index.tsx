@@ -1,20 +1,16 @@
 import type { NextPage } from 'next'
 import styles from './index.module.scss'
-import Logo from '@components/atoms/Logo'
-import Text from '@components/atoms/Text'
 import IconButton from '@components/molecules/IconButton'
 import Panel from '@components/atoms/Panel'
 import { useForm } from 'react-hook-form'
 import Input from '@components/molecules/Input'
-import Link from '@components/atoms/Link'
 import { useContext, useRef, useState } from 'react'
 import { AuthContext, SignUpData } from '@contexts/AuthContextData'
-import { useMutation, useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { CREATE_USER } from '@graphql/mutations'
 import Router from 'next/router'
 import ErrorMessage from '@components/atoms/ErrorMessage'
 import PageTitle from '@components/molecules/PageTitle'
-import { GET_USERS_BY_UID } from '@graphql/queries'
 
 const Register: NextPage = () => {
   const {
@@ -45,7 +41,7 @@ const Register: NextPage = () => {
       Router.push('/menu')
     } catch (e) {
       console.error(e)
-      setError(e)
+      setError(e as Error)
     } finally {
       setLoading(false)
     }

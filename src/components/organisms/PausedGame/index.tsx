@@ -3,6 +3,7 @@ import IconButton from '@components/molecules/IconButton'
 import { useContext } from 'react'
 import { GameContext } from '@contexts/GameContextData'
 import Router from 'next/router'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 export default function PausedGame() {
   const { toggleIsMenuOpen, resetData } = useContext(GameContext)
@@ -40,7 +41,7 @@ export default function PausedGame() {
         {actions.map((action) => (
           <IconButton
             key={action.key}
-            icon={action.icon}
+            icon={action.icon as IconProp}
             important={action.important === true}
             long
             onClick={action.onClick}
