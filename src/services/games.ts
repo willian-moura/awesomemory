@@ -7,7 +7,7 @@ import { SAVE_FOUND_ICONS, SAVE_GAME } from '@graphql/mutations'
 import { icon } from '../types/globals'
 import { client } from '@graphql/apollo'
 
-export const getRandomIcons = async (seed = Math.random(), take = 2) => {
+export const getRandomIcons = async (seed = Math.random(), take = 10) => {
   const res = await client.query({
     query: GET_RANDOM_ICONS,
     variables: {
