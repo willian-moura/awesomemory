@@ -8,11 +8,13 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { GameContextProvider } from '@contexts/GameContextData'
 import { ApolloProvider } from '@apollo/client'
 import { AuthContextProvider } from '@contexts/AuthContextData'
-import { client } from '@graphql/apollo'
+import { initializeApollo } from '@graphql/apollo'
 
 library.add(fas, fab)
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const client = initializeApollo()
+
   return (
     <ApolloProvider client={client}>
       <AuthContextProvider>

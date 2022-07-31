@@ -1,13 +1,13 @@
 import styles from './index.module.scss'
-import { Props } from '../../../types/globals'
-import { useQuery } from '@apollo/client'
-import { GET_RANKING } from '@graphql/queries'
 import Spin from '@components/molecules/Spin'
 import RankingItem from '@components/molecules/RankingItem'
 import { useEffect, useState } from 'react'
 import { getRanking } from '../../../services/games'
+import { initializeApollo } from '@graphql/apollo'
 
 export default function RankingList() {
+  initializeApollo()
+
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
 

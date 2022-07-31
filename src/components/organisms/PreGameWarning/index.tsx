@@ -19,8 +19,8 @@ const ICONS = [
   {
     name: 'dog',
     family: 'fas'
-  }
-  /*
+  },
+  {
     name: 'user',
     family: 'fas'
   },
@@ -75,7 +75,7 @@ const ICONS = [
   {
     name: 'user-secret',
     family: 'fas'
-  }*/
+  }
 ]
 
 export default function PreGameWarning() {

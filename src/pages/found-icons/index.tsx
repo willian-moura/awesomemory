@@ -8,8 +8,11 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '@contexts/AuthContextData'
 import FoundIcons from '@components/organisms/FoundIcons'
 import Spin from '@components/molecules/Spin'
+import { initializeApollo } from '@graphql/apollo'
 
 const FoundIconsPage: NextPage = () => {
+  initializeApollo()
+
   const { user } = useContext(AuthContext)
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
