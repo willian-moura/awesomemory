@@ -1,47 +1,39 @@
 import type { NextPage } from 'next'
-import styles from './home.module.scss'
-import Panel from '@components/atoms/Panel'
+import styles from './index.module.scss'
+import Logo from '@components/atoms/Logo'
 import Text from '@components/atoms/Text'
 import IconButton from '@components/molecules/IconButton'
-import Divider from '@components/atoms/Divider'
-import Logo from '@components/atoms/Logo'
+import Panel from '@components/atoms/Panel'
+import Link from '@components/atoms/Link'
 import Router from 'next/router'
+import AuthMiddleware from '../midlewares/auth'
 
 const Home: NextPage = () => {
-  const userName = 'Test User'
-
-  const onPlay = () => {
-    Router.push('/game')
+  const onLogin = () => {
+    console.log('hit')
+    Router.push('/login')
   }
 
   return (
-    <div className={styles.container}>
-      <div className={'logo'}>
-        <Logo large />
-      </div>
-      <Panel>
-        <div className={'panel'}>
-          <div className={'wellcome'}>
-            <Text>
-              Welcome <b>{userName}</b>!
-            </Text>
-            <Text> Let’s play?</Text>
-          </div>
-          <div className={'actions'}>
-            <IconButton icon={'gamepad'} long onClick={onPlay}>
-              Play
-            </IconButton>
-            <IconButton icon={'list-ol'} long>
-              Ranking
-            </IconButton>
-            <Divider />
-            <IconButton icon={'arrow-right-from-bracket'} long important>
-              Logout
+    <AuthMiddleware>
+      <div className={styles.container}>
+        <Panel>
+          <div className={'panel'}>
+            <div className={'logo'}>
+              <Logo large />
+            </div>
+            <Text>The Font Awesome Icons memory game</Text>
+            <IconButton icon={'sign-in-alt'} important onClick={onLogin}>
+              Sign in
             </IconButton>
           </div>
+        </Panel>
+        <div className={'register'}>
+          <Text>Don't have a account?</Text>
+          <Link href={'/register'}>Sign up and have fun</Link>
         </div>
-      </Panel>
-    </div>
+      </div>
+    </AuthMiddleware>
   )
 }
 

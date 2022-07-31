@@ -1,0 +1,36 @@
+@import "src/styles/extends";
+@import "src/styles/variables";
+
+.container{
+  @extend %column-start, %gap-1;
+
+  [class~=input-wrapper] {
+    @extend %inline-start-center, %gap-1, %w-full;
+
+    height: 53px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid $dk-gravy;
+    background-color: $white;
+
+    input {
+      @extend %w-full;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      color: $text-color;
+      background: none;
+      outline: none;
+      border: none;
+    }
+
+    &:focus-within{
+      box-shadow:
+              0 0 0 calc(1em*1/16) $body-background,
+              0 0 0 calc(calc(1em*3/16) + calc(1em*1/16)) $blue;
+    }
+  }
+
+  ::placeholder{
+    color: $input-placeholder;
+  }
+}

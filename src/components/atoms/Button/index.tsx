@@ -1,8 +1,8 @@
 import styles from './index.module.scss'
-import { MouseEventHandler, ReactNode } from 'react'
+import { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from 'react'
 import classNames from 'classnames/bind'
 
-export type ButtonProps = {
+export type ButtonProps = ButtonHTMLAttributes<any> & {
   important?: boolean
   small?: boolean
   disabled?: boolean
