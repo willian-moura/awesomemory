@@ -19,9 +19,12 @@ export const getRandomIcons = async (seed = Math.random(), take = 10) => {
   return res?.data?.list_icon_random
 }
 
-export const getRanking = async () => {
+export const getRanking = async (take = 20) => {
   const res = await client.query({
-    query: GET_RANKING
+    query: GET_RANKING,
+    variables: {
+      take
+    }
   })
 
   return res?.data?.games

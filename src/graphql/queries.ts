@@ -20,8 +20,8 @@ export const GET_RANDOM_ICONS = gql`
 `
 
 export const GET_RANKING = gql`
-  query getGames {
-    games(order_by: { duration: asc }) {
+  query getGames($take: Int) {
+    games(order_by: { duration: asc }, limit: $take) {
       id
       duration
       createdAt
