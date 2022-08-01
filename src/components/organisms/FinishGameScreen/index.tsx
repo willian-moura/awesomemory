@@ -2,16 +2,19 @@ import styles from './index.module.scss'
 import Text from '@components/atoms/Text'
 import { useContext } from 'react'
 import { GameContext } from '@contexts/GameContextData'
-import { getTimeDifferenceFormated } from '@utils/date-helpers'
+import { getMillisecondsFormated } from '@utils/date-helpers'
 import IconButton from '@components/molecules/IconButton'
 import Router from 'next/router'
 import Panel from '@components/atoms/Panel'
+import moment from 'moment'
 
 export default function FinishGameScreen() {
   const gameContext = useContext(GameContext)
   const { startedAt, finishedAt, resetData } = gameContext
 
-  const gameDuration = getTimeDifferenceFormated(startedAt, finishedAt)
+  const gameDuration = getMillisecondsFormated(
+    moment(finishedAt).diff(moment(startedAt), 'milliseconds')
+  )
 
   const onTryAgain = () => {
     resetData()

@@ -5,6 +5,7 @@ import { useMemo } from 'react'
 import moment from 'moment'
 import { msToDuration } from '@grpc/grpc-js/src/duration'
 import Tag from '@components/atoms/Tag'
+import { getMillisecondsFormated } from '@utils/date-helpers'
 
 interface RankingItemProps extends Props {
   position: number
@@ -23,10 +24,7 @@ export default function RankingItem({
   }, [createdAt])
 
   const cptDuration = useMemo(() => {
-    const min = Math.floor(duration / 60000)
-    const sec = Math.round((duration % 60000) / 1000)
-
-    return sec === 60 ? `${min + 1}m` : `${min > 0 ? `${min}m ` : ''}${sec}s`
+    return getMillisecondsFormated(duration)
   }, [duration])
 
   return (

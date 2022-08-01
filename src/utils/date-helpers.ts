@@ -24,3 +24,10 @@ export const getTimeDifferenceFormated = (
 
   return str
 }
+
+export const getMillisecondsFormated = (ms: number) => {
+  const min = Math.floor(ms / 60000)
+  const sec = Math.round((ms % 60000) / 1000)
+
+  return sec === 60 ? `${min + 1}m` : `${min > 0 ? `${min}m ` : ''}${sec}s`
+}
