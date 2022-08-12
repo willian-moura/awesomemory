@@ -1,34 +1,130 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
+
+<div align="center">
+   <a href="#">
+      <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> 
+  </a>
+   <a href="#">
+      <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />    
+   </a>
+   <a href="#">
+      <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" /> 
+   </a>
+   <a href="#">
+      <img src="https://img.shields.io/badge/Hasura-131a2a?style=for-the-badge&logo=hasura&logoColor=1db3d0" /> 
+   </a>
+   <a href="#">
+      <img src="https://img.shields.io/badge/Firebase-F29D0C?style=for-the-badge&logo=firebase&logoColor=white" />
+   </a>
+   <a href="#">
+      <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+   </a>
+   <a href="https://www.linkedin.com/in/willian-moura-43a129134" target="_blank">
+      <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+    </a>
+</div>
+
+<br />
+<div align="center">
+  <a href="https://awesomemory.vercel.app" target="_blank"> 
+    <img src="https://user-images.githubusercontent.com/30304867/184428713-c6e86704-7f5e-4355-8c61-a55b05382b4e.png" alt="Logo">
+  </a>
+</div>
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a> 
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li> 
+    <li>
+      <a href="#getting-started">Getting Started</a> 
+    </li>  
+    <li><a href="#built-with">Built With</a></li>
+    <li><a href="#contact">Contact</a></li> 
+    <li><a href="#license">Lisence</a></li> 
+  </ol>
+</details>
+
+## About The Project
+<a href="https://awesomemory.vercel.app" target="_blank">
+  <img src="https://user-images.githubusercontent.com/30304867/184441201-007a09c2-4e34-49c1-81c7-9e6808155efc.png" alt="Logo">
+</a> 
+
+I had this desire for a long time to make a memory game using the Font Awesome icons, and I used to thinking in some good names to this, when borning this perfection: AwesoMemory. 
+
+So I took advantage of my desire to practice some techs skills plus this "amazing" ideia already mentioned to build this project. In this way I used TypeScript, NextJS, Hasura, GraphQL, Apollo, Firebase and Vercel to build a full stack application where you can enjoy to play the best ever memory game already created (`setModestyValue(0)`). In this game you can log in, play the game, fight for the firsts positions on the ranking and still view the icons that you found when playing.
+<br>
+
+
+The entire project was designed by me on Figma using the mobile first aproach, so I recommend to open in a mobile device.
+<a href="https://www.figma.com/file/NBb6Ol3BkyXZz7lhvXmobr/AwesoMemory?node-id=103%3A926" target="_blank">You can see the project in Figma here</a>
+ 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Roadmap
+
+- [x] Register and log in
+- [x] Play the game, save the game duration for the ranking
+- [x] Save the found icons
+- [ ] Implements rarity on for the cards 
+- [ ] Create more game modes
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Getting Started
 
-First, run the development server:
+### Installation and Running Locally
+ 
+1. Clone the repo
+   ```bash
+   
+   git clone https://github.com/willian-moura/awesomemory.git
+   
+   ```
+2. Install yarn/npm packages
+   ```bash
+   
+   yarn || npm install 
+   
+   ```
+3. Rename `.env.sample` to .env and fill the values:
+   ```bash
+    ## Firebase
+    NEXT_PUBLIC_FIREBASE_API_KEY=
+    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+    NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+    NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+    NEXT_PUBLIC_FIREBASE_MESSAGING_SANDER_ID=
+    NEXT_PUBLIC_FIREBASE_APP_ID=
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+    ## Hasura Connection
+    NEXT_PUBLIC_DEFAULT_URI_APOLLO=
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+ ## Built with
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+-   [React](https://pt-br.reactjs.org/)
+-   [Next.js](https://nextjs.org/)
+-   [Hasura](https://hasura.io/)  
+-   [Apollo GraphQL](https://www.apollographql.com/docs/react/)
+-   [Firebase](https://firebase.google.com/docs/)
+-   [Vercel](https://vercel.com) 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Contact
+<a href="https://www.linkedin.com/in/willian-moura-43a129134" target="_blank">
+  <img src="https://avatars.githubusercontent.com/u/30304867?v=4" width="100px" alt="Willian Moura"/>
+  <p>Willian Moura</p>
+</a>
+<br /> 
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+Distributed under the MIT License. See <a href="https://github.com/willian-moura/awesomemory/blob/main/LICENSE" target="_blank"> MIT </a> for more information.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="right">(<a href="#top">back to top</a>)</p>
