@@ -13,7 +13,7 @@ export default function AuthMiddleware({ children }: Props) {
   const router = useRouter()
 
   useEffect(() => {
-    /*if (user?.id) {
+    if (user?.id) {
       setLoading(false)
       return
     }
@@ -36,7 +36,7 @@ export default function AuthMiddleware({ children }: Props) {
           goToHome()
         })
         .finally(() => setLoading(false))
-    }*/
+    }
   }, [])
 
   const goToHome = () => {

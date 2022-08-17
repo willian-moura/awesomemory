@@ -83,7 +83,7 @@ export default function PreGameWarning() {
   const { startGame } = gameContext
   const [timer, setTimer] = useState(0)
   const [icons, setIcons] = useState<Array<icon>>([])
-  const [loadingIcons, setLoadingIcons] = useState(false)
+  const [loadingIcons, setLoadingIcons] = useState(true)
 
   const buttonLabel = `Start${timer > 0 ? ` ${timer}` : ''}`
 
