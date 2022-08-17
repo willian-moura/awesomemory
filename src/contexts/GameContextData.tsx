@@ -4,6 +4,7 @@ import { getTimeDifferenceFormated } from '@utils/date-helpers'
 import moment from 'moment'
 import { saveGameToUser, saveIconsToGame } from '../services/games'
 import { LOCAL_STORAGE_USER } from '../constants/globals'
+import { waitTimer } from '@utils/promisse-helpers'
 
 type GameContextData = {
   startedAt: Date | null
@@ -81,15 +82,27 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
     }
   }
 
-  const turnCard = (cardId: number) => {
+  const turnCard = async (cardId: number) => {
+    let newTurnedCards = [...turnedCards]
     const newCards = [...cards]
     const idx = newCards.findIndex((item) => item.id === cardId)
     if (idx !== -1 && turnedCards.length < 2) {
       newCards[idx].turned = true
       newCards[idx].focused = false
       setCards([...newCards])
-      setTurnedCards([...turnedCards, newCards[idx]])
+      newTurnedCards = [...newTurnedCards, newCards[idx]]
     }
+
+    if (newTurnedCards?.length === 2) {
+      await waitTimer(1)
+      const found = verifyIfFound(newTurnedCards)
+      if (found) {
+        return
+      }
+      turnAllCardsDown()
+      return
+    }
+    setTurnedCards(newTurnedCards)
   }
 
   const focusCard = (cardId: number) => {
@@ -110,21 +123,21 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
     setCards([...newCards])
   }
 
-  const verifyIfFound = () => {
-    if (turnedCards.length !== 2) {
+  const verifyIfFound = (newTurnedCards = turnedCards) => {
+    if (newTurnedCards.length !== 2) {
       return false
     }
 
-    const iconFamily = turnedCards[0].icon.family
-    const iconName = turnedCards[0].icon.name
+    const iconFamily = newTurnedCards[0].icon.family
+    const iconName = newTurnedCards[0].icon.name
     if (
-      turnedCards[1].icon.family === iconFamily &&
-      turnedCards[1].icon.name === iconName
+      newTurnedCards[1].icon.family === iconFamily &&
+      newTurnedCards[1].icon.name === iconName
     ) {
       const newCards = cards.filter(
         (card) => card.icon.family !== iconFamily || card.icon.name !== iconName
       )
-      const newFoundIcons = [...foundIcons, turnedCards[0].icon]
+      const newFoundIcons = [...foundIcons, newTurnedCards[0].icon]
       setCards([...newCards])
       setFoundIcons([...newFoundIcons])
       setTurnedCards([])

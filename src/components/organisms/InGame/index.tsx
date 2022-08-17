@@ -5,6 +5,7 @@ import Card from '@components/molecules/Card'
 import { card } from '../../../types/globals'
 import Header from '@components/molecules/Header'
 import useOutsideClick from '../../../hooks/useOutsideClick'
+import { waitTimer } from '@utils/promisse-helpers'
 
 export default function InGame() {
   const gameContext = useContext(GameContext)
@@ -29,29 +30,15 @@ export default function InGame() {
       return
     }
 
-    resetFocus()
+    // resetFocus()
   })
 
-  const onClickCard = (card: card) => {
-    const found = verifyIfFound()
-    if (found) {
-      return
-    }
-
-    if (turnedCards?.length === 2) {
-      turnAllCardsDown()
-      return
-    }
-
+  const onClickCard = async (card: card) => {
     if (card.turned) {
       return
     }
 
-    if (card.focused) {
-      return turnCard(card.id)
-    }
-
-    focusCard(card.id)
+    turnCard(card.id)
   }
 
   return (

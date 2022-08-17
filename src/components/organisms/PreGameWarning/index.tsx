@@ -19,7 +19,7 @@ const ICONS = [
   {
     name: 'dog',
     family: 'fas'
-  },
+  } /*
   {
     name: 'user',
     family: 'fas'
@@ -75,7 +75,7 @@ const ICONS = [
   {
     name: 'user-secret',
     family: 'fas'
-  }
+  }*/
 ]
 
 export default function PreGameWarning() {
@@ -83,7 +83,7 @@ export default function PreGameWarning() {
   const { startGame } = gameContext
   const [timer, setTimer] = useState(0)
   const [icons, setIcons] = useState<Array<icon>>([])
-  const [loadingIcons, setLoadingIcons] = useState(true)
+  const [loadingIcons, setLoadingIcons] = useState(false)
 
   const buttonLabel = `Start${timer > 0 ? ` ${timer}` : ''}`
 
