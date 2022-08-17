@@ -9,7 +9,7 @@ import Drawer from '@components/atoms/Drawer'
 import FoundIconsButton from '@components/molecules/FoundIconsButton'
 import FoundIcons from '@components/organisms/FoundIconsMenu'
 import FinishGameScreen from '@components/organisms/FinishGameScreen'
-// import AuthMiddleware from '../../midlewares/auth'
+import AuthMiddleware from '../../midlewares/auth'
 import { MOBILE_BREAKPOINT } from '../../constants/globals'
 
 const Game: NextPage = () => {
@@ -17,36 +17,36 @@ const Game: NextPage = () => {
   const { startedAt, finishedAt, isMenuOpen, isFoundDrawerOpen } = gameContext
 
   return (
-    // <AuthMiddleware>
-    <div className={styles.container}>
-      {startedAt ? (
-        <>
-          <Drawer
-            open={isMenuOpen}
-            direction={'left-right'}
-            width={window.innerWidth <= MOBILE_BREAKPOINT ? '100%' : '25vw'}
-          >
-            <PausedGame />
-          </Drawer>
-          <InGame />
-          <div className={'found-icons-btn'}>
-            <FoundIconsButton />
-          </div>
-          <Drawer
-            style={{ left: 0 }}
-            open={isFoundDrawerOpen}
-            direction={'bottom-top'}
-            width={window.innerWidth <= MOBILE_BREAKPOINT ? '100%' : '25vw'}
-          >
-            <FoundIcons />
-          </Drawer>
-        </>
-      ) : (
-        <PreGameWarning />
-      )}
-      {finishedAt && <FinishGameScreen />}
-    </div>
-    // </AuthMiddleware>
+    <AuthMiddleware>
+      <div className={styles.container}>
+        {startedAt ? (
+          <>
+            <Drawer
+              open={isMenuOpen}
+              direction={'left-right'}
+              width={window.innerWidth <= MOBILE_BREAKPOINT ? '100%' : '25vw'}
+            >
+              <PausedGame />
+            </Drawer>
+            <InGame />
+            <div className={'found-icons-btn'}>
+              <FoundIconsButton />
+            </div>
+            <Drawer
+              style={{ left: 0 }}
+              open={isFoundDrawerOpen}
+              direction={'bottom-top'}
+              width={window.innerWidth <= MOBILE_BREAKPOINT ? '100%' : '25vw'}
+            >
+              <FoundIcons />
+            </Drawer>
+          </>
+        ) : (
+          <PreGameWarning />
+        )}
+        {finishedAt && <FinishGameScreen />}
+      </div>
+    </AuthMiddleware>
   )
 }
 
