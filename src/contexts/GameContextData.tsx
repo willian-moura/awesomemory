@@ -21,7 +21,7 @@ type GameContextData = {
   setCards: (cards: Array<card>) => void
   setFoundIcons: (icons: Array<icon>) => void
   startGame: (icons: Array<icon>) => void
-  turnCard: (cardId: number) => Array<card>
+  turnCard: (cardId: number) => void
   turnAllCardsDown: () => void
   focusCard: (cardId: number) => void
   resetFocus: () => void
@@ -103,7 +103,6 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
       return
     }
     setTurnedCards(newTurnedCards)
-    return newTurnedCards
   }
 
   const focusCard = (cardId: number) => {
