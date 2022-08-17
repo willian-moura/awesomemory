@@ -89,8 +89,8 @@ export default function PreGameWarning() {
 
   const onStart = async () => {
     setTimer(5)
-    // await waitTimer(5, (time) => setTimer(time))
-    startGame(ICONS)
+    await waitTimer(5, (time) => setTimer(time))
+    startGame(icons)
   }
 
   const fetchIcons = async () => {
@@ -104,7 +104,7 @@ export default function PreGameWarning() {
   }
 
   useEffect(() => {
-    // fetchIcons()
+    fetchIcons()
   }, [])
 
   if (loadingIcons) {
