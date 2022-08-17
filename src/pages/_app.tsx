@@ -9,26 +9,26 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { GameContextProvider } from '@contexts/GameContextData'
 import { ApolloProvider } from '@apollo/client'
 import { AuthContextProvider } from '@contexts/AuthContextData'
-import { initializeApollo } from '@graphql/apollo'
+// import { initializeApollo } from '@graphql/apollo'
 
 library.add(fas, fab, far as IconPack)
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const client = initializeApollo()
+  // const client = initializeApollo()
 
   return (
-    <ApolloProvider client={client}>
-      <AuthContextProvider>
-        <GameContextProvider>
-          <div className={styles.container}>
-            <div className={styles.container__component}>
-              <Component {...pageProps} />
-            </div>
-            <BackgroundImage />
-          </div>
-        </GameContextProvider>
-      </AuthContextProvider>
-    </ApolloProvider>
+    // <ApolloProvider client={client}>
+    // <AuthContextProvider>
+    <GameContextProvider>
+      <div className={styles.container}>
+        <div className={styles.container__component}>
+          <Component {...pageProps} />
+        </div>
+        <BackgroundImage />
+      </div>
+    </GameContextProvider>
+    // </AuthContextProvider>
+    // </ApolloProvider>
   )
 }
 

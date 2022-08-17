@@ -10,7 +10,6 @@ import AuthMiddleware from '../midlewares/auth'
 
 const Home: NextPage = () => {
   const onLogin = () => {
-    console.log('hit')
     Router.push('/login')
   }
 
