@@ -78,6 +78,8 @@ const ICONS = [
   }*/
 ]
 
+const TIME_WAITING = 1
+
 export default function PreGameWarning() {
   const gameContext = useContext(GameContext)
   const { startGame } = gameContext
@@ -88,8 +90,8 @@ export default function PreGameWarning() {
   const buttonLabel = `Start${timer > 0 ? ` ${timer}` : ''}`
 
   const onStart = async () => {
-    setTimer(5)
-    await waitTimer(5, (time) => setTimer(time))
+    setTimer(TIME_WAITING)
+    await waitTimer(TIME_WAITING, (time) => setTimer(time))
     startGame(icons)
   }
 

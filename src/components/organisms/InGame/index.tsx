@@ -27,14 +27,11 @@ export default function InGame() {
 
     if (turnedCards?.length === 2) {
       turnAllCardsDown()
-      return
     }
-
-    // resetFocus()
   })
 
   const onClickCard = async (card: card) => {
-    if (card.turned) {
+    if (card.turned || turnedCards.length === 2) {
       return
     }
 

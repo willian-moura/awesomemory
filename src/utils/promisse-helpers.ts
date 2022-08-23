@@ -2,9 +2,13 @@ export const sleep = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-export const waitTimer = (seconds: number, callback?: (n: number) => void) => {
+export const waitTimer = (
+  loops: number,
+  callback?: ((n: number) => void) | null,
+  waitInterval = 1000
+) => {
   return new Promise((resolve) => {
-    let i = seconds
+    let i = loops
     const interval = setInterval(() => {
       i -= 1
       callback && callback(i)
@@ -12,6 +16,6 @@ export const waitTimer = (seconds: number, callback?: (n: number) => void) => {
         resolve(true)
         clearInterval(interval)
       }
-    }, 1000)
+    }, waitInterval)
   })
 }

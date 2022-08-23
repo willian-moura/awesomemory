@@ -85,6 +85,7 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
   const turnCard = async (cardId: number) => {
     let newTurnedCards = [...turnedCards]
     const newCards = [...cards]
+
     const idx = newCards.findIndex((item) => item.id === cardId)
     if (idx !== -1 && turnedCards.length < 2) {
       newCards[idx].turned = true
@@ -92,9 +93,10 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
       setCards([...newCards])
       newTurnedCards = [...newTurnedCards, newCards[idx]]
     }
+    setTurnedCards(newTurnedCards)
 
     if (newTurnedCards?.length === 2) {
-      await waitTimer(1)
+      await waitTimer(1, null, 500)
       const found = verifyIfFound(newTurnedCards)
       if (found) {
         return
@@ -102,7 +104,6 @@ export function GameContextProvider({ children }: GameContextProviderProps) {
       turnAllCardsDown()
       return
     }
-    setTurnedCards(newTurnedCards)
   }
 
   const focusCard = (cardId: number) => {
