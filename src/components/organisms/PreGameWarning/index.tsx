@@ -78,7 +78,7 @@ const ICONS = [
   }*/
 ]
 
-const TIME_WAITING = 1
+const TIME_WAITING = 5
 
 export default function PreGameWarning() {
   const gameContext = useContext(GameContext)
