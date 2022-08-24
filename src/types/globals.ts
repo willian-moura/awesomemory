@@ -20,7 +20,7 @@ export type card = {
 
 export type rankingItem = {
   id: number
-  user: any
+  userName: string
   duration: number
   createdAt: string
 }

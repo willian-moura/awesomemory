@@ -17,7 +17,7 @@ export default function RankingItem({
   item,
   onClick
 }: RankingItemProps) {
-  const { createdAt, user, duration } = item
+  const { createdAt, userName, duration } = item
 
   const cptCreatedAt = useMemo(() => {
     return moment(createdAt).format('YYYY/MM/DD [at] HH:mm')
@@ -34,7 +34,7 @@ export default function RankingItem({
       </div>
       <div className={'details'}>
         <span className={'username'}>
-          <Text bold>{user?.userName}</Text>
+          <Text bold>{userName}</Text>
         </span>
         <div className={'bottom-info'}>
           <Text size={'14px'}>{cptCreatedAt}</Text>

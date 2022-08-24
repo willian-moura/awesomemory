@@ -27,7 +27,7 @@ export const getRanking = async (take = 20) => {
     }
   })
 
-  return res?.data?.games
+  return res?.data?.ranking_by_user
 }
 
 export const saveGameToUser = async (userUid: string, duration: number) => {
