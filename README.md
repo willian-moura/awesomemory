@@ -69,8 +69,11 @@ The entire project was designed by me on Figma using the mobile first aproach, s
 - [x] Register and log in
 - [x] Play the game, save the game duration for the ranking
 - [x] Save the found icons
-- [ ] Implements rarity on for the cards 
+- [ ] Password recovering
+- [ ] Password change
+- [ ] Rarity for the cards 
 - [ ] Create more game modes
+- [ ] Use a found icon as profile icon
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
