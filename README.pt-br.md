@@ -1,4 +1,4 @@
-[🇧🇷 Versão em português](./README.pt-br.md)
+[🇺🇸 Versão em inglês](./README.md)
 
 <div id="top"></div>
 
