@@ -34,69 +34,69 @@
 </div>
 
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Sumário</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a> 
+      <a href="#about-the-project">Sobre o Projeto</a> 
     </li>
-    <li><a href="#roadmap">Roadmap</a></li> 
+    <li><a href="#roadmap">Log de Funcionalidades</a></li> 
     <li>
-      <a href="#getting-started">Getting Started</a> 
+      <a href="#getting-started">Rodando o Projeto</a> 
     </li>  
-    <li><a href="#built-with">Built With</a></li>
-    <li><a href="#contact">Contact</a></li> 
-    <li><a href="#license">Lisence</a></li> 
+    <li><a href="#built-with">Tecnologias Utilizadas</a></li>
+    <li><a href="#contact">Contato</a></li> 
+    <li><a href="#license">Licença</a></li> 
   </ol>
 </details>
 
-## About The Project
+## Sobre o Projeto
 <a href="https://awesomemory.vercel.app" target="_blank">
   <img src="https://user-images.githubusercontent.com/30304867/184441201-007a09c2-4e34-49c1-81c7-9e6808155efc.png" alt="Logo">
 </a> 
 
-I had this desire for a long time to make a memory game using the Font Awesome icons, and I used to thinking in some good names to this, when borning this perfection: AwesoMemory. 
+Já fazia um tempo que eu tinha a ideia de criar um jogo da memória usando os ícones da biblioteca Font Awesome, e gastava um tempo pensando em qual seria o nome do jogo, até que surge em minha cabeça o nome perfeito: AwesoMemory (awesome = incrível e memory = memória).
 
-So I took advantage of my desire to practice some techs skills plus this "amazing" ideia already mentioned to build this project. In this way I used TypeScript, NextJS, Hasura, GraphQL, Apollo, Firebase and Vercel to build a full stack application where you can enjoy to play the best ever memory game already created (`setModestyValue(0)`). In this game you can log in, play the game, fight for the firsts positions on the ranking and still view the icons that you found when playing.
+Então, aproveitei essa minha ideia para praticar algumas tecnologias que tinha vontade de aprender ou me aprofundar. Dessa forma, utilizei TypeScript, NextJS, Hasura, GraphQL, Apollo, Firebase e Vercel para desenvolver uma aplicação full stack onde você pode se divertir jogando o melhor jogo da memória já feito (`setModestia(0)`). No jogo é possível se cadastrar, logar, jogar, brigar pelas primeiras posições no ranking e ainda visualizar todos os ícones encontrados durante as partidas.
 <br>
 
 
-The entire project was designed by me on Figma using the mobile first aproach, so I recommend to open in a mobile device.
-<a href="https://www.figma.com/file/NBb6Ol3BkyXZz7lhvXmobr/AwesoMemory?node-id=103%3A926" target="_blank">You can see the project in Figma here</a>
+O projeto inteiro foi prototipado no Figma por mim utilizando a abordagem mobile first, dessa forma, apesar da visualização em desktops ser perfeitamente jogável, recomendo utilizar um dispositivo móvel para jogar.
+<a href="https://www.figma.com/file/NBb6Ol3BkyXZz7lhvXmobr/AwesoMemory?node-id=103%3A926" target="_blank">Você pode ver o projeto no Figma aqui</a>
  
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">Voltar para o topo</a>)</p>
 
-## Roadmap
+## Log de Funcionalidades
 
-- [x] Register and log in
-- [x] Play the game, save the game duration for the ranking
-- [x] Save the found icons
-- [ ] Password recovering
-- [ ] Password change
-- [ ] Rarity for the cards 
-- [ ] Create more game modes
-- [ ] Use a found icon as profile icon
+- [x] Se cadastrar e logar
+- [x] Jogar e salvar a duração da partida para o ranking
+- [x] Salvar os ícones encontrados Save the found icons
+- [ ] Recuperação de senha
+- [ ] Troca de senha
+- [ ] Raridade das cartas
+- [ ] Criar mais modos de jogo
+- [ ] Usar um ícone encontrado como ícone de perfil
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">Voltar para o topo</a>)</p>
 
-## Getting Started
+## Rodando o Projeto
 
-### Installation and Running Locally
+### Instalando e Rodando Localmente
  
-1. Clone the repo
+1. Clone o repositório
    ```bash
    
    git clone https://github.com/willian-moura/awesomemory.git
    
    ```
-2. Install yarn/npm packages
+2. Instale os pacotes yarn/npm
    ```bash
    
    yarn || npm install 
    
    ```
-3. Rename `.env.sample` to .env and fill the values:
+3. Renomeie `.env.sample` para `.env` e preencha os valores:
    ```bash
     ## Firebase
     NEXT_PUBLIC_FIREBASE_API_KEY=
@@ -110,9 +110,9 @@ The entire project was designed by me on Figma using the mobile first aproach, s
     NEXT_PUBLIC_DEFAULT_URI_APOLLO=
    ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">Voltar para o topo</a>)</p>
 
- ## Built with
+ ## Tecnologias Utilizadas
 
 -   [React](https://pt-br.reactjs.org/)
 -   [Next.js](https://nextjs.org/)
@@ -121,7 +121,7 @@ The entire project was designed by me on Figma using the mobile first aproach, s
 -   [Firebase](https://firebase.google.com/docs/)
 -   [Vercel](https://vercel.com) 
 
-## Contact
+## Contato
 <a href="https://www.linkedin.com/in/willian-moura-43a129134" target="_blank">
   <img src="https://avatars.githubusercontent.com/u/30304867?v=4" width="100px" alt="Willian Moura"/>
   <p>Willian Moura</p>
@@ -130,6 +130,6 @@ The entire project was designed by me on Figma using the mobile first aproach, s
 
 ## License
 
-Distributed under the MIT License. See <a href="https://github.com/willian-moura/awesomemory/blob/main/LICENSE" target="_blank"> MIT </a> for more information.
+Distribuído sob a licença MIT. Veja <a href="https://github.com/willian-moura/awesomemory/blob/main/LICENSE" target="_blank"> MIT </a> para mais informações.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">Voltar para o topo</a>)</p>
