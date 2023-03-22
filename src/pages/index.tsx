@@ -28,7 +28,7 @@ const Home: NextPage = () => {
           </div>
         </Panel>
         <div className={'register'}>
-          <Text>Don&apos;t have a account?</Text>
+          <Text>Don&apos;t have an account?</Text>
           <Link href={'/register'}>Sign up and have fun</Link>
         </div>
       </div>
